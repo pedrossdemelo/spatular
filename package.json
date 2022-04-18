@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint --cache --ext .js,.jsx,.ts,.tsx . --fix",
     "prepare": "husky install"
   },
@@ -48,7 +48,8 @@
     "*.{js,jsx,ts,tsx}": [
       "yarn organize-imports-cli",
       "yarn lint:fix",
-      "yarn prettier --write"
+      "yarn prettier --write",
+      "yarn lint"
     ]
   }
 }
