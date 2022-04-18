@@ -26,7 +26,7 @@
 
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    "quotes": ["error", "double"],
+    "quotes": ["error", "double", { "avoidEscape": true }],
     "react/jsx-newline": ["error", { "prevent": false }],
     "react/react-in-jsx-scope": ["off"],
     "react/jsx-uses-react": ["error"],
