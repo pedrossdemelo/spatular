@@ -1,7 +1,7 @@
 export interface Meal {
   idMeal: string;
   strMeal: string;
-  strDrinkAlternate?: any;
+  strDrinkAlternate?: string;
   strCategory: string;
   strArea: string;
   strInstructions: string;
@@ -49,15 +49,15 @@ export interface Meal {
   strMeasure19: string;
   strMeasure20: string;
   strSource: string;
-  strImageSource?: any;
-  strCreativeCommonsConfirmed?: any;
-  dateModified?: any;
+  strImageSource?: string;
+  strCreativeCommonsConfirmed?: string;
+  dateModified?: string;
 }
 
 export interface Drink {
   idDrink: string;
   strDrink: string;
-  strDrinkAlternate?: any;
+  strDrinkAlternate?: string;
   strTags: string;
   strVideo: string;
   strCategory: string;
@@ -65,12 +65,12 @@ export interface Drink {
   strAlcoholic: string;
   strGlass: string;
   strInstructions: string;
-  strInstructionsES?: any;
+  strInstructionsES?: string;
   strInstructionsDE: string;
-  strInstructionsFR?: any;
+  strInstructionsFR?: string;
   strInstructionsIT: string;
-  "strInstructionsZH-HANS"?: any;
-  "strInstructionsZH-HANT"?: any;
+  "strInstructionsZH-HANS"?: string;
+  "strInstructionsZH-HANT"?: string;
   strDrinkThumb: string;
   strIngredient1: string;
   strIngredient2: string;
@@ -78,30 +78,30 @@ export interface Drink {
   strIngredient4: string;
   strIngredient5: string;
   strIngredient6: string;
-  strIngredient7?: any;
-  strIngredient8?: any;
-  strIngredient9?: any;
-  strIngredient10?: any;
-  strIngredient11?: any;
-  strIngredient12?: any;
-  strIngredient13?: any;
-  strIngredient14?: any;
-  strIngredient15?: any;
+  strIngredient7?: string;
+  strIngredient8?: string;
+  strIngredient9?: string;
+  strIngredient10?: string;
+  strIngredient11?: string;
+  strIngredient12?: string;
+  strIngredient13?: string;
+  strIngredient14?: string;
+  strIngredient15?: string;
   strMeasure1: string;
   strMeasure2: string;
   strMeasure3: string;
   strMeasure4: string;
   strMeasure5: string;
-  strMeasure6?: any;
-  strMeasure7?: any;
-  strMeasure8?: any;
-  strMeasure9?: any;
-  strMeasure10?: any;
-  strMeasure11?: any;
-  strMeasure12?: any;
-  strMeasure13?: any;
-  strMeasure14?: any;
-  strMeasure15?: any;
+  strMeasure6?: string;
+  strMeasure7?: string;
+  strMeasure8?: string;
+  strMeasure9?: string;
+  strMeasure10?: string;
+  strMeasure11?: string;
+  strMeasure12?: string;
+  strMeasure13?: string;
+  strMeasure14?: string;
+  strMeasure15?: string;
   strImageSource: string;
   strImageAttribution: string;
   strCreativeCommonsConfirmed: string;
@@ -237,7 +237,7 @@ export default function parseRecipe(recipe: Meal & Drink) {
     area: strArea,
     instructions: strInstructions,
     image: strMealThumb || strDrinkThumb,
-    youtube: strYoutube,
+    youtube: strYoutube || undefined,
     ingredients,
     source: strSource,
     imageSource: strImageSource,
@@ -251,3 +251,5 @@ export default function parseRecipe(recipe: Meal & Drink) {
     tags,
   };
 }
+
+export type ParsedRecipe = ReturnType<typeof parseRecipe>;
