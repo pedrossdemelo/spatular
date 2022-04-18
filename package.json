@@ -51,9 +51,9 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "yarn organize-imports-cli",
-      "yarn lint:fix",
+      "yarn eslint --cache --fix",
       "yarn prettier --write",
-      "yarn lint"
+      "yarn eslint --cache"
     ]
   }
 }
