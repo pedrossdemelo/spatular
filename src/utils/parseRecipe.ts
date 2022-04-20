@@ -108,7 +108,7 @@ export interface Drink {
   dateModified: string;
 }
 
-export default function parseRecipe(recipe: Meal & Drink) {
+export default function parseRecipe(recipe: Meal | Drink) {
   const {
     idMeal,
     strMeal,
@@ -171,7 +171,7 @@ export default function parseRecipe(recipe: Meal & Drink) {
     strGlass,
     strDrinkThumb,
     strImageAttribution,
-  } = recipe;
+  } = recipe as Meal & Drink;
 
   const ingredientNames = [
     strIngredient1,
