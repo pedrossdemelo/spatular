@@ -19,11 +19,11 @@ export default class TheDataDbApi extends Api {
   }
 
   async getBy(type: string, method: string, query: string) {
-    const { url, key } = this;
+    const { url: baseUrl, key } = this;
 
-    const fetchURL = `${url}${method}.php?${type[0]}=${query}`;
+    const url = `${baseUrl}${method}.php?${type[0]}=${query}`;
 
-    return { fetchURL, key };
+    return { url, key };
   }
 
   getCategories() {
@@ -61,6 +61,6 @@ export default class TheDataDbApi extends Api {
   async getRandom() {
     const { url, key } = this;
 
-    return { fetchUrl: `${url}random.php`, key };
+    return { url: `${url}random.php`, key };
   }
 }
