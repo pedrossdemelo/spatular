@@ -1,9 +1,5 @@
 import Api from "./Api";
 
-export interface QueryOptions {
-  limit?: number;
-}
-
 export default class TheDataDbApi extends Api {
   key: string;
 
@@ -18,72 +14,44 @@ export default class TheDataDbApi extends Api {
     this.getByFirstLetter = this.getByFirstLetter.bind(this);
     this.getById = this.getById.bind(this);
     this.getRandom = this.getRandom.bind(this);
-    this.getNationalities = this.getNationalities.bind(this);
     this.getIngredients = this.getIngredients.bind(this);
     this.getCategories = this.getCategories.bind(this);
-    this.getAlcoholicLabels = this.getAlcoholicLabels.bind(this);
   }
 
-  async getBy(
-    type: string,
-    method: string,
-    query: string,
-    { limit }: QueryOptions = {},
-  ) {
+  async getBy(type: string, method: string, query: string) {
     const { url, key } = this;
 
-    const formatQuery = `${url}${method}.php?${type[0]}=${query}`;
+    const fetchURL = `${url}${method}.php?${type[0]}=${query}`;
 
-    const { data, error } = await Api.fetchJson(formatQuery);
-
-    const keyData = data?.[key] ?? [];
-
-    if (limit) keyData.splice(limit);
-
-    return { data: keyData, error };
+    return { fetchURL, key };
   }
 
-  getCategories(options: QueryOptions) {
-    return this.getBy("categories", "list", "list", options);
+  getCategories() {
+    return this.getBy("categories", "list", "list");
   }
 
-  getNationalities(options: QueryOptions) {
-    if (this.key === "meals") {
-      return this.getBy("anationalities", "list", "list", options);
-    }
-
-    return undefined;
+  getIngredients() {
+    return this.getBy("ingredients", "list", "list");
   }
 
-  getAlcoholicLabels(options: QueryOptions) {
-    if (this.key === "drinks") {
-      return this.getBy("alcoholic", "list", "list", options);
-    }
-    throw new Error("Meals API does not support alcoholic labels");
+  getByCategory(category: string) {
+    return this.getBy("category", "filter", category);
   }
 
-  getIngredients(options: QueryOptions) {
-    return this.getBy("ingredients", "list", "list", options);
+  getByNationality(nationality: string) {
+    return this.getBy("anationality", "filter", nationality);
   }
 
-  getByCategory(category: string, options: QueryOptions) {
-    return this.getBy("category", "filter", category, options);
+  getByIngredient(ingredient: string) {
+    return this.getBy("ingredient", "filter", ingredient);
   }
 
-  getByNationality(nationality: string, options: QueryOptions) {
-    return this.getBy("anationality", "filter", nationality, options);
+  getBySearch(search: string) {
+    return this.getBy("search", "search", search);
   }
 
-  getByIngredient(ingredient: string, options: QueryOptions) {
-    return this.getBy("ingredient", "filter", ingredient, options);
-  }
-
-  getBySearch(search: string, options: QueryOptions) {
-    return this.getBy("search", "search", search, options);
-  }
-
-  getByFirstLetter(letter: string, options: QueryOptions) {
-    return this.getBy("firstLetter", "filter", letter, options);
+  getByFirstLetter(letter: string) {
+    return this.getBy("firstLetter", "filter", letter);
   }
 
   getById(id: string) {
@@ -92,9 +60,7 @@ export default class TheDataDbApi extends Api {
 
   async getRandom() {
     const { url, key } = this;
-    const { data, error } = await Api.fetchJson(`${url}random.php`);
-    const keyData = data?.[key] ?? [];
 
-    return { data: keyData, error };
+    return { fetchUrl: `${url}random.php`, key };
   }
 }
