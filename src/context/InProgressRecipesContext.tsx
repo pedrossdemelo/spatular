@@ -7,7 +7,15 @@ type InProgressRecipes = {
   cocktails: { [id: string]: string[] };
 };
 
-export const InProgressRecipesContext = createContext([] as any);
+type InProgressRecipesContextValue = readonly [
+  InProgressRecipes,
+  (recipe: ParsedRecipe) => void,
+  (recipe: ParsedRecipe) => void,
+  React.Dispatch<React.SetStateAction<InProgressRecipes>>,
+];
+
+export const InProgressRecipesContext =
+  createContext<InProgressRecipesContextValue>([] as any);
 
 interface Props {
   children: React.ReactNode;
@@ -20,19 +28,26 @@ function InProgressRecipesContextProvider({ children }: Props) {
       cocktails: {},
     });
 
-  const key = (type: ParsedRecipe["type"]) =>
-    type === "drink" ? "cocktails" : "meals";
+  function key(type: ParsedRecipe["type"]) {
+    return type === "drink" ? "cocktails" : "meals";
+  }
 
-  const addRecipe = (recipe: ParsedRecipe) => {
+  /**
+   * Adds a recipe to the in-progress list.
+   */
+  function addRecipe(recipe: ParsedRecipe) {
     const { type, id } = recipe;
     const newInProgressRecipes = {
       ...inProgressRecipes,
       [key(type)]: { ...inProgressRecipes[key(type)], [id]: [] },
     };
     setInProgressRecipes(newInProgressRecipes);
-  };
+  }
 
-  const removeRecipe = (recipe: ParsedRecipe) => {
+  /**
+   * Removes a recipe from the in-progress list.
+   */
+  function removeRecipe(recipe: ParsedRecipe) {
     const { type, id } = recipe;
     const newInProgressRecipes = {
       ...inProgressRecipes,
@@ -42,7 +57,7 @@ function InProgressRecipesContextProvider({ children }: Props) {
       },
     };
     setInProgressRecipes(newInProgressRecipes);
-  };
+  }
 
   const value = useMemo(
     () =>
