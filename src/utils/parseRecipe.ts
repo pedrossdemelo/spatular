@@ -230,7 +230,7 @@ export default function parseRecipe(recipe: Meal | Drink) {
 
   return {
     id: idMeal || idDrink,
-    type: strMeal ? "food" : "drink",
+    type: strMeal ? "food" : ("drink" as "food" | "drink"),
     name: strMeal || strDrink,
     alternateName: strDrinkAlternate,
     category: strCategory,
