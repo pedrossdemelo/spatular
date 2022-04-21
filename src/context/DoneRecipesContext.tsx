@@ -4,7 +4,7 @@ import { useLocalStorage } from "../hooks";
 
 type DoneRecipe = ParsedRecipe & { doneDate: string };
 
-type DoneRecipesContextValue = readonly [
+export type DoneRecipesContextValue = readonly [
   DoneRecipe[],
   (recipe: ParsedRecipe) => void,
   (recipe: ParsedRecipe) => void,

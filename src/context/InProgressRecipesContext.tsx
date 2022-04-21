@@ -7,7 +7,7 @@ type InProgressRecipes = {
   cocktails: { [id: string]: string[] };
 };
 
-type InProgressRecipesContextValue = readonly [
+export type InProgressRecipesContextValue = readonly [
   InProgressRecipes,
   (recipe: ParsedRecipe) => void,
   (recipe: ParsedRecipe) => void,

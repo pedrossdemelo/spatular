@@ -3,7 +3,7 @@ import React, { createContext, useMemo } from "react";
 import { ParsedRecipe, parseFavoriteRecipe } from "utils";
 import { FavoriteRecipe } from "utils/parseFavoriteRecipe";
 
-type FavoriteRecipesContextValue = readonly [
+export type FavoriteRecipesContextValue = readonly [
   FavoriteRecipe[],
   (recipe: ParsedRecipe) => void,
   (recipe: ParsedRecipe) => void,

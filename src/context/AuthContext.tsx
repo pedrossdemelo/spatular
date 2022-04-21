@@ -4,7 +4,7 @@ import { useLocalStorage } from "../hooks";
 
 type MaybeUser = null | { email: string };
 
-type AuthContextValue = readonly [
+export type AuthContextValue = readonly [
   MaybeUser,
   (email: string) => void,
   () => void,
