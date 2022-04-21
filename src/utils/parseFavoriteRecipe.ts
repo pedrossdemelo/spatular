@@ -21,3 +21,5 @@ export default function parseFavoriteRecipe(recipe: ParsedRecipe) {
     image,
   };
 }
+
+export type FavoriteRecipe = ReturnType<typeof parseFavoriteRecipe>;
