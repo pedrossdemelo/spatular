@@ -1,9 +1,9 @@
-import { parseRecipe } from "utils";
+import { ParsedRecipe, parseRecipe } from "utils";
 import useFetch from "./useFetch";
 
 function useDataDbApi(
   urlWithKey: UrlWithKey,
-): [Recipe[], boolean, string | null];
+): [ParsedRecipe[], boolean, string | null];
 
 function useDataDbApi<P extends MaybeParser>(
   urlWithKey: UrlWithKey,
@@ -50,12 +50,10 @@ interface Options<P extends MaybeParser> {
   limit?: number;
 }
 
-type Recipe = ReturnType<typeof parseRecipe>;
-
 type InferDataType<P extends MaybeParser> = unknown extends P
-  ? Recipe[]
+  ? ParsedRecipe[]
   : P extends undefined
-  ? Recipe[]
+  ? ParsedRecipe[]
   : P extends null
   ? unknown[]
   : P extends (...args: any[]) => infer U
