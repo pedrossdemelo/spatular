@@ -21,7 +21,7 @@ export default function useFetch<T>(URL: string) {
         setLoading(false);
       }
     })();
-  });
+  }, [URL]);
 
   return [data, loading, error] as const;
 }
