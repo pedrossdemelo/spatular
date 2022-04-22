@@ -2,7 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "pages/Login";
 import linking from "./linking";
-import MainTabStackNavigator from "./MainTabsStack";
+import MainTabStack from "./MainTabsStack";
 
 export type RootStackParamsList = {
   MainTabsStack: undefined;
@@ -21,7 +21,7 @@ function RootStack() {
       >
         <Root.Screen name="Login" component={Login} />
 
-        <Root.Screen name="MainTabsStack" component={MainTabStackNavigator} />
+        <Root.Screen name="MainTabsStack" component={MainTabStack} />
       </Root.Navigator>
     </NavigationContainer>
   );
