@@ -19,7 +19,7 @@ function Login() {
 
   const handleLogin = () => {
     login(email);
-    navigation.navigate("foodTabsStack");
+    navigation.navigate("MainTabsStack");
   };
 
   return (
