@@ -8,10 +8,6 @@ describe("Explore page", () => {
     cy.contains('[role="button"]', /drink/i).should("exist");
   });
 
-  it("should display a profile button", () => {
-    cy.contains('[role="button"]', /profile/i).should("exist");
-  });
-
   it("should be able to redirect to the drinks page", () => {
     cy.contains('[role="button"]', /drink/i).click({ force: true });
     cy.location("pathname").should("eq", "/explore/drinks");
@@ -21,12 +17,6 @@ describe("Explore page", () => {
   it("should be able to redirect to the foods page", () => {
     cy.contains('[role="button"]', /food/i).click({ force: true });
     cy.location("pathname").should("eq", "/explore/foods");
-    cy.go("back");
-  });
-
-  it("should be able to redirect to the profile page", () => {
-    cy.contains('[role="button"]', /profile/i).click({ force: true });
-    cy.location("pathname").should("eq", "/profile");
     cy.go("back");
   });
 });
