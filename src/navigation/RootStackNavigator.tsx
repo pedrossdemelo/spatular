@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Text } from "react-native";
 import linking from "./linking";
 
-type RootStackNavigatorParamsList = {
+export type RootStackNavigatorParamsList = {
   MainTabsStack: undefined;
   Login: undefined;
 };
