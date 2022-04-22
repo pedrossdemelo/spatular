@@ -5,7 +5,10 @@ export {
   DoneRecipesContext,
   DoneRecipesContextProvider,
 } from "./DoneRecipesContextProvider";
-export type { DoneRecipesContextValue } from "./DoneRecipesContextProvider";
+export type {
+  DoneRecipe,
+  DoneRecipesContextValue,
+} from "./DoneRecipesContextProvider";
 export {
   FavoritesRecipesContext,
   FavoritesRecipesContextProvider,

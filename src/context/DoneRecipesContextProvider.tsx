@@ -2,7 +2,7 @@ import useLocalStorage from "hooks/useLocalStorage";
 import React, { createContext, useMemo } from "react";
 import { ParsedRecipe } from "utils";
 
-type DoneRecipe = ParsedRecipe & { doneDate: string };
+export type DoneRecipe = ParsedRecipe & { doneDate: string };
 
 export type DoneRecipesContextValue = readonly [
   DoneRecipe[],
