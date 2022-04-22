@@ -5,7 +5,7 @@ export default function parseFavoriteRecipe(recipe: ParsedRecipe) {
     id,
     name,
     category = "",
-    area: nationality = "",
+    nationality = "",
     type,
     alcoholic: alcoholicOrNot = "",
     image,

@@ -234,7 +234,7 @@ export default function parseRecipe(recipe: Meal | Drink) {
     name: strMeal || strDrink,
     alternateName: strDrinkAlternate,
     category: strCategory,
-    area: strArea,
+    nationality: strArea,
     instructions: strInstructions,
     image: strMealThumb || strDrinkThumb,
     youtube: strYoutube || undefined,
