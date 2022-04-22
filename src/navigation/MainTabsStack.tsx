@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import DrinksStack from "pages/Drinks";
 import ExploreStack from "pages/Explore";
 import { Text } from "react-native";
 
@@ -20,7 +21,7 @@ function MainTabsStack() {
     >
       <MainTabs.Screen name="ExploreStack" component={ExploreStack} />
 
-      <MainTabs.Screen name="DrinksStack" component={Placeholder} />
+      <MainTabs.Screen name="DrinksStack" component={DrinksStack} />
 
       <MainTabs.Screen name="FoodsStack" component={Placeholder} />
 
