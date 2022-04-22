@@ -75,12 +75,13 @@ function runSpecsOn(page) {
       cy.contains(instructions).should("be.visible");
     });
 
-    it("should display a youtube video if one is provided", () => {
-      const { youtube } = parseRecipe(MOCK);
+    isFoods &&
+      it("should display a youtube video if one is provided", () => {
+        const { youtube } = parseRecipe(MOCK);
 
-      youtube &&
-        cy.get(`iframe[src*='${youtube.split("=")[1]}']`).should("exist");
-    });
+        youtube &&
+          cy.get(`iframe[src*='${youtube.split("=")[1]}']`).should("exist");
+      });
 
     it(`should display 6 ${isFoods ? "drink" : "food"} recommendations`, () => {
       const recommendations = OPPOSITE_MOCK.slice(0, 6).map(parseRecipe);
