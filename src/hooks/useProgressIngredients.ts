@@ -1,4 +1,4 @@
-import { useRecipeList } from "hooks";
+import useRecipeList from "hooks/useRecipeList";
 import { ParsedRecipe } from "utils/parseRecipe";
 
 interface Ingredient {
