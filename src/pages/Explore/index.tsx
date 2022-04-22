@@ -5,6 +5,7 @@ import ExploreDrinks from "./ExploreDrinks";
 import ExploreDrinksByIngredient from "./ExploreDrinksByIngredient";
 import ExploreFoods from "./ExploreFoods";
 import ExploreFoodsByIngredient from "./ExploreFoodsByIngredient";
+import ExploreFoodsByNationality from "./ExploreFoodsByNationality";
 
 type ExploreStackParamsList = {
   Explore: undefined;
@@ -34,6 +35,11 @@ function ExploreStack() {
       <Stack.Screen
         name="ExploreFoodsByIngredient"
         component={ExploreFoodsByIngredient}
+      />
+
+      <Stack.Screen
+        name="ExploreFoodsByNationality"
+        component={ExploreFoodsByNationality}
       />
     </Stack.Navigator>
   );
