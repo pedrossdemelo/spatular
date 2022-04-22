@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import Explore from "./Explore";
 import ExploreDrinks from "./ExploreDrinks";
+import ExploreFoods from "./ExploreFoods";
 
 type ExploreStackParamsList = {
   Explore: undefined;
@@ -20,6 +21,8 @@ function ExploreStack() {
       <Stack.Screen name="Explore" component={Explore} />
 
       <Stack.Screen name="ExploreDrinks" component={ExploreDrinks} />
+
+      <Stack.Screen name="ExploreFoods" component={ExploreFoods} />
     </Stack.Navigator>
   );
 }
