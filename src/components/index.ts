@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as ExploreByIngredient } from "./ExploreByIngredient";
+export { default as ExploreByNationality } from "./ExploreByNationality";
