@@ -31,7 +31,7 @@ function ConsumableDoneCard(props: ConsumableDoneCardProps) {
 
   const goToRecipePage = () => {
     // BUG: React Navigation does not redirect to a different stack when the user enters a page through an URL
-    navigation.navigate(`${type}sStack`, {
+    navigation.navigate(`${capitalize(type)}sStack`, {
       screen: `${capitalize(type)}Id`,
       params: { id },
     });
