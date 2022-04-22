@@ -35,38 +35,44 @@ describe("Favorite recipes screen", () => {
   });
 
   it("should have three filters: all, drinks and foods", () => {
-    cy.contains('[role="button"]', /all/i).should("exist");
-    cy.contains('[role="button"]', /drink/i).should("exist");
-    cy.contains('[role="button"]', /food/i).should("exist");
+    cy.getByTestId("filter-all-button").should("exist");
+    cy.getByTestId("filter-drink-button").should("exist");
+    cy.getByTestId("filter-food-button").should("exist");
   });
 
   it("should be able to filter by drinks", () => {
     const { name, category, image } = drink;
+    const { name: nameFood } = food;
 
-    cy.contains('[role="button"]', /drink/i).click({ force: true });
+    cy.getByTestId("filter-drink-button").click({ force: true });
 
-    cy.get(`[data-testid="${name}-done-card"]`).as("drink-card");
+    cy.getByTestId(`${name}-done-card`).as("drink-card");
     cy.get("@drink-card").should("contain", name);
     cy.get("@drink-card").should("contain", category);
     cy.get("@drink-card").find("img").should("have.attr", "src", image);
+
+    cy.getByTestId(`${nameFood}-done-card`).should("not.exist");
   });
 
   it("should be able to filter by foods", () => {
     const { name, category, image } = food;
+    const { name: nameDrink } = drink;
 
-    cy.contains('[role="button"]', /food/i).click({ force: true });
+    cy.getByTestId("filter-food-button").click({ force: true });
 
-    cy.get(`[data-testid="${name}-done-card"]`).as("food-card");
+    cy.getByTestId(`${name}-done-card`).as("food-card");
     cy.get("@food-card").should("contain", name);
     cy.get("@food-card").should("contain", category);
     cy.get("@food-card").find("img").should("have.attr", "src", image);
+
+    cy.getByTestId(`${nameDrink}-done-card`).should("not.exist");
   });
 
   it("should display all recipes if the filter is all", () => {
-    cy.contains('[role="button"]', /all/i).click();
+    cy.getByTestId("filter-all-button").click();
 
     favoriteRecipes.forEach(({ name, category, image }) => {
-      cy.get(`[data-testid="${name}-done-card"]`).as(`${name}-card`);
+      cy.getByTestId(`${name}-done-card`).as(`${name}-card`);
 
       cy.get(`@${name}-card`).should("contain", name);
       cy.get(`@${name}-card`).should("contain", category);
@@ -76,15 +82,15 @@ describe("Favorite recipes screen", () => {
 
   it("should have an unfavorite and share button on each card", () => {
     favoriteRecipes.forEach(({ name }) => {
-      cy.get(`[data-testid="${name}-remove-favorite-button"]`).should("exist");
+      cy.getByTestId(`${name}-remove-favorite-button`).should("exist");
 
-      cy.get(`[data-testid="${name}-share-button"]`).should("exist");
+      cy.getByTestId(`${name}-share-button`).should("exist");
     });
   });
 
   it("should be able to unfavorite a recipe and remove it from local storage", () => {
     favoriteRecipes.forEach(({ name, id }) => {
-      cy.get(`[data-testid="${name}-remove-favorite-button"]`).click({
+      cy.getByTestId(`${name}-remove-favorite-button`).click({
         force: true,
       });
 
@@ -96,8 +102,17 @@ describe("Favorite recipes screen", () => {
   });
 
   it("should redirect to the recipe id page when clicking on a recipe image", () => {
+    cy.visit("/favorite-recipes", {
+      onBeforeLoad(win) {
+        win.localStorage.setItem(
+          "favoriteRecipes",
+          JSON.stringify(favoriteRecipes),
+        );
+      },
+    });
+
     favoriteRecipes.forEach(({ id, name, type }) => {
-      cy.get(`[data-testid="${name}-anchor"]`).click({ force: true });
+      cy.getByTestId(`${name}-anchor`).click({ force: true });
 
       cy.location("pathname").should("eq", `/${type}s/${id}`);
 

@@ -30,11 +30,23 @@ function DoneRecipes() {
 
   return (
     <ScrollView>
-      <Button onPress={changeFilterTo("all")} title="All" />
+      <Button
+        testID="filter-all-button"
+        onPress={changeFilterTo("all")}
+        title="All"
+      />
 
-      <Button onPress={changeFilterTo("food")} title="Food" />
+      <Button
+        testID="filter-food-button"
+        onPress={changeFilterTo("food")}
+        title="Food"
+      />
 
-      <Button onPress={changeFilterTo("drink")} title="Drink" />
+      <Button
+        testID="filter-drink-button"
+        onPress={changeFilterTo("drink")}
+        title="Drink"
+      />
 
       {filteredDoneRecipes.map((recipe) => (
         <ConsumableDoneCard data={recipe} key={recipe.name} />
