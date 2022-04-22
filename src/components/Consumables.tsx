@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Image, Pressable, ScrollView, Text } from "react-native";
 import { drinkApi, foodApi } from "services";
 import tw from "twrnc";
+import { Drink, Meal } from "utils";
 
 interface ConsumableCardProps {
   data: {
@@ -83,8 +84,8 @@ export default function Consumables(props: ConsumablesProps) {
   const [consumables] = useDataDbApi(URL, { limit: 24 });
 
   const [categories] = useDataDbApi(Api.getCategories(), {
+    parser: ({ strCategory }: Meal | Drink) => strCategory,
     limit: 5,
-    parser: ({ category }: any): string => category,
   });
 
   return (
