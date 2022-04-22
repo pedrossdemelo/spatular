@@ -1,3 +1,4 @@
+export { default as ConsumableDoneCard } from "./ConsumableDoneCard";
 export { default as ConsumableId } from "./ConsumableId";
 export { default as ConsumableIdProgress } from "./ConsumableIdProgress";
 export { default as Consumables } from "./Consumables";
