@@ -8,7 +8,9 @@ export default function useLocalStorage<T>(key: string, initialValue: T) {
     (async () => {
       const storedValue = await AsyncStorage.getItem(key);
 
-      const parsedValue = JSON.parse(storedValue!);
+      if (!storedValue) return;
+
+      const parsedValue = JSON.parse(storedValue);
       setValue(parsedValue);
     })();
   }, []);
