@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator<ExploreStackParamsList>();
 
 function ExploreStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Explore">
       <Stack.Screen name="Explore" component={Explore} />
     </Stack.Navigator>
   );
