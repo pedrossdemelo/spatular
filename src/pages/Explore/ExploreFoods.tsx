@@ -26,7 +26,7 @@ export default function ExploreFoods() {
 
     const { id } = parseRecipe(food);
 
-    navigate("foodsStack", { screen: "FoodId", params: { id } });
+    navigate("FoodsStack", { screen: "FoodId", params: { id } });
   };
 
   return (
