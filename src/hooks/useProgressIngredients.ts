@@ -1,4 +1,4 @@
-import { ParsedRecipe } from "./parseRecipe";
+import { ParsedRecipe } from "../utils/parseRecipe";
 import useRecipeList from "./useRecipeList";
 
 interface Ingredient {
