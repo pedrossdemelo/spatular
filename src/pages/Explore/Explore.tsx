@@ -10,18 +10,8 @@ export default function Explore() {
 
   const goToExploreFoods = () => navigation.navigate("ExploreFoods");
 
-  const goToProfile = () => navigation.navigate("profile");
-
   return (
     <View>
-      <Pressable
-        onPress={goToProfile}
-        style={tailwind`flex justify-center items-center p-2 bg-slate-50 m-2 rounded-full`}
-        accessibilityRole="button"
-      >
-        <Text>Profile</Text>
-      </Pressable>
-
       <Pressable
         onPress={goToExploreDrinks}
         style={tailwind`flex justify-center items-center p-2 bg-slate-50 m-2 rounded-full`}
