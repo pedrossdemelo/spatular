@@ -15,8 +15,6 @@ function RootStackNavigator() {
   return (
     // @ts-expect-error
     <NavigationContainer linking={linking}>
-      {/* @ts-expect-error */}
-
       <RootStack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName="Login"

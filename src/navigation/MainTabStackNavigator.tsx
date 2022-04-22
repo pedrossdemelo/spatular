@@ -12,7 +12,6 @@ const MainTabStack = createBottomTabNavigator<MainTabStackParamsList>();
 
 function MainTabStackNavigator() {
   return (
-    // @ts-expect-error
     <MainTabStack.Navigator
       initialRouteName="ExploreStack"
       backBehavior="history"
