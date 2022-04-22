@@ -1,34 +1,30 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "pages/Login";
-import { Text } from "react-native";
 import linking from "./linking";
+import MainTabStackNavigator from "./MainTabsStack";
 
-export type RootStackNavigatorParamsList = {
+export type RootStackParamsList = {
   MainTabsStack: undefined;
   Login: undefined;
 };
 
-const RootStack = createNativeStackNavigator<RootStackNavigatorParamsList>();
+const Root = createNativeStackNavigator<RootStackParamsList>();
 
-function RootStackNavigator() {
+function RootStack() {
   return (
     // @ts-expect-error
     <NavigationContainer linking={linking}>
-      <RootStack.Navigator
+      <Root.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName="Login"
       >
-        <RootStack.Screen name="Login" component={Login} />
+        <Root.Screen name="Login" component={Login} />
 
-        <RootStack.Screen name="MainTabsStack" component={Placeholder} />
-      </RootStack.Navigator>
+        <Root.Screen name="MainTabsStack" component={MainTabStackNavigator} />
+      </Root.Navigator>
     </NavigationContainer>
   );
 }
 
-function Placeholder() {
-  return <Text>Placeholder</Text>;
-}
-
-export default RootStackNavigator;
+export default RootStack;
