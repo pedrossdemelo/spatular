@@ -1,12 +1,12 @@
-import { DoneRecipesContextValue } from "context/DoneRecipesContext";
-import { FavoriteRecipesContextValue } from "context/FavoritesRecipesContext";
-import { InProgressRecipesContextValue } from "context/InProgressRecipesContext";
-import { useContext } from "react";
 import {
   DoneRecipesContext,
+  DoneRecipesContextValue,
+  FavoriteRecipesContextValue,
   FavoritesRecipesContext,
   InProgressRecipesContext,
-} from "../context";
+  InProgressRecipesContextValue,
+} from "context";
+import { useContext } from "react";
 
 const recipeListContextMap = {
   favoriteRecipes: FavoritesRecipesContext,

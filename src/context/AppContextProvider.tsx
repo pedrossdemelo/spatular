@@ -1,8 +1,8 @@
 import React from "react";
-import AuthContextProvider from "./AuthContext";
-import DoneRecipesContextProvider from "./DoneRecipesContext";
-import FavoritesRecipesContextProvider from "./FavoritesRecipesContext";
-import InProgressRecipesContextProvider from "./InProgressRecipesContext";
+import AuthContextProvider from "./AuthContextProvider";
+import DoneRecipesContextProvider from "./DoneRecipesContextProvider";
+import FavoritesRecipesContextProvider from "./FavoritesRecipesContextProvider";
+import InProgressRecipesContextProvider from "./InProgressRecipesContextProvider";
 
 interface Props {
   children: React.ReactNode;
@@ -23,8 +23,3 @@ function AppContextProvider({ children }: Props) {
 }
 
 export default AppContextProvider;
-
-export { AuthContext } from "./AuthContext";
-export { DoneRecipesContext } from "./DoneRecipesContext";
-export { FavoritesRecipesContext } from "./FavoritesRecipesContext";
-export { InProgressRecipesContext } from "./InProgressRecipesContext";
