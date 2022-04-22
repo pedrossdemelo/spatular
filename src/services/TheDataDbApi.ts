@@ -18,7 +18,7 @@ export default class TheDataDbApi extends Api {
     this.getCategories = this.getCategories.bind(this);
   }
 
-  async getBy(type: string, method: string, query: string) {
+  getBy(type: string, method: string, query: string) {
     const { url: baseUrl, key } = this;
 
     const url = `${baseUrl}${method}.php?${type[0]}=${query}`;
@@ -58,7 +58,7 @@ export default class TheDataDbApi extends Api {
     return this.getBy("id", "lookup", id);
   }
 
-  async getRandom() {
+  getRandom() {
     const { url, key } = this;
 
     return { url: `${url}random.php`, key };
