@@ -1,9 +1,9 @@
 import Api from "./Api";
 
 export default class TheDataDbApi extends Api {
-  key: string;
+  key: "meals" | "drinks";
 
-  constructor(url: string, key: string) {
+  constructor(url: string, key: "meals" | "drinks") {
     super(url);
     this.key = key;
     this.getBy = this.getBy.bind(this);
