@@ -3,12 +3,9 @@ import { Platform } from "react-native";
 
 export default function useAppSettings() {
   useEffect(() => {
-    if (
-      Platform.OS === "web" &&
-      document &&
-      "getElementsByTagName" in document
-    ) {
-      document.getElementsByName("body")[0].style.overflow = "hidden";
+    if (Platform.OS === "web" && document) {
+      const root = document.getElementById("root");
+      root && (root.style.overflow = "hidden");
     }
   }, []);
 }
