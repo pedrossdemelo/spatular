@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DrinksStack from "pages/Drinks";
 import ExploreStack from "pages/Explore";
 import FoodsStack from "pages/Foods";
-import { Text } from "react-native";
+import ProfileStack from "pages/Profile";
 
 export type MainTabsParamsList = {
   ExploreStack: undefined;
@@ -26,13 +26,9 @@ function MainTabsStack() {
 
       <MainTabs.Screen name="FoodsStack" component={FoodsStack} />
 
-      <MainTabs.Screen name="ProfileStack" component={Placeholder} />
+      <MainTabs.Screen name="ProfileStack" component={ProfileStack} />
     </MainTabs.Navigator>
   );
-}
-
-function Placeholder() {
-  return <Text>Placeholder xdd</Text>;
 }
 
 export default MainTabsStack;
