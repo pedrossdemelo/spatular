@@ -67,7 +67,7 @@ function ConsumableDoneCard(props: ConsumableDoneCardProps) {
         {[nationality || alcoholic, category].filter((a) => a).join(" - ")}
       </Text>
 
-      <Text>{new Date(doneDate).toLocaleDateString()}</Text>
+      {!!doneDate && <Text>{new Date(doneDate).toLocaleDateString()}</Text>}
 
       {tags && tags.map((tag: any) => <Text key={tag}>{tag}</Text>)}
 
