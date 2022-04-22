@@ -43,7 +43,7 @@ describe("Favorite recipes screen", () => {
   it("should be able to filter by drinks", () => {
     const { name, category, image } = drink;
 
-    cy.contains('[role="button"]', /drink/i).click();
+    cy.contains('[role="button"]', /drink/i).click({ force: true });
 
     cy.get(`[data-testid="${name}-done-card"]`).as("drink-card");
     cy.get("@drink-card").should("contain", name);
@@ -54,7 +54,7 @@ describe("Favorite recipes screen", () => {
   it("should be able to filter by foods", () => {
     const { name, category, image } = food;
 
-    cy.contains('[role="button"]', /food/i).click();
+    cy.contains('[role="button"]', /food/i).click({ force: true });
 
     cy.get(`[data-testid="${name}-done-card"]`).as("food-card");
     cy.get("@food-card").should("contain", name);
