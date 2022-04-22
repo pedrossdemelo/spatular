@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Login from "pages/Login";
 import { Text } from "react-native";
 import linking from "./linking";
 
@@ -14,11 +15,13 @@ function RootStackNavigator() {
   return (
     // @ts-expect-error
     <NavigationContainer linking={linking}>
+      {/* @ts-expect-error */}
+
       <RootStack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName="Login"
       >
-        <RootStack.Screen name="Login" component={Placeholder} />
+        <RootStack.Screen name="Login" component={Login} />
 
         <RootStack.Screen name="MainTabsStack" component={Placeholder} />
       </RootStack.Navigator>
