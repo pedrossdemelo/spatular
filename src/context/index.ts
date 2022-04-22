@@ -1,21 +1,18 @@
 export { default as AppContextProvider } from "./AppContextProvider";
-export {
-  AuthContext,
-  default as AuthContextProvider,
-} from "./AuthContextProvider";
+export { AuthContext, AuthContextProvider } from "./AuthContextProvider";
 export type { AuthContextValue } from "./AuthContextProvider";
 export {
-  default as DoneRecipesContextProvider,
   DoneRecipesContext,
+  DoneRecipesContextProvider,
 } from "./DoneRecipesContextProvider";
 export type { DoneRecipesContextValue } from "./DoneRecipesContextProvider";
 export {
-  default as FavoritesRecipesContextProvider,
   FavoritesRecipesContext,
+  FavoritesRecipesContextProvider,
 } from "./FavoritesRecipesContextProvider";
 export type { FavoriteRecipesContextValue } from "./FavoritesRecipesContextProvider";
 export {
-  default as InProgressRecipesContextProvider,
   InProgressRecipesContext,
+  InProgressRecipesContextProvider,
 } from "./InProgressRecipesContextProvider";
 export type { InProgressRecipesContextValue } from "./InProgressRecipesContextProvider";

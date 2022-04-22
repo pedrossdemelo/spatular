@@ -1,4 +1,4 @@
-import { useLocalStorage } from "hooks";
+import useLocalStorage from "hooks/useLocalStorage";
 import React, { createContext, useMemo } from "react";
 import { ParsedRecipe } from "utils";
 
@@ -21,7 +21,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-function InProgressRecipesContextProvider({ children }: Props) {
+export function InProgressRecipesContextProvider({ children }: Props) {
   const [inProgressRecipes, setInProgressRecipes] =
     useLocalStorage<InProgressRecipes>("inProgressRecipes", {
       meals: {},
@@ -76,5 +76,3 @@ function InProgressRecipesContextProvider({ children }: Props) {
     </InProgressRecipesContext.Provider>
   );
 }
-
-export default InProgressRecipesContextProvider;

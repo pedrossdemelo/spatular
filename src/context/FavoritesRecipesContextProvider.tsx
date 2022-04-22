@@ -1,4 +1,4 @@
-import { useLocalStorage } from "hooks";
+import useLocalStorage from "hooks/useLocalStorage";
 import React, { createContext, useMemo } from "react";
 import { ParsedRecipe, parseFavoriteRecipe } from "utils";
 import { FavoriteRecipe } from "utils/parseFavoriteRecipe";
@@ -17,7 +17,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-function FavoritesRecipesContextProvider({ children }: Props) {
+export function FavoritesRecipesContextProvider({ children }: Props) {
   const [favoritesRecipes, setFavoritesRecipes] = useLocalStorage<
     FavoriteRecipe[]
   >("favoriteRecipes", []);
@@ -49,5 +49,3 @@ function FavoritesRecipesContextProvider({ children }: Props) {
     </FavoritesRecipesContext.Provider>
   );
 }
-
-export default FavoritesRecipesContextProvider;

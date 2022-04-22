@@ -1,6 +1,6 @@
+import useLocalStorage from "hooks/useLocalStorage";
 import React, { createContext, useMemo } from "react";
 import { ParsedRecipe } from "utils";
-import { useLocalStorage } from "../hooks";
 
 type DoneRecipe = ParsedRecipe & { doneDate: string };
 
@@ -19,7 +19,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-function DoneRecipesContextProvider({ children }: Props) {
+export function DoneRecipesContextProvider({ children }: Props) {
   const [doneRecipes, setDoneRecipes] = useLocalStorage<DoneRecipe[]>(
     "doneRecipes",
     [],
@@ -48,5 +48,3 @@ function DoneRecipesContextProvider({ children }: Props) {
     </DoneRecipesContext.Provider>
   );
 }
-
-export default DoneRecipesContextProvider;
