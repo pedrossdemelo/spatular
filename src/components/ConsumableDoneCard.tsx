@@ -69,7 +69,7 @@ function ConsumableDoneCard(props: ConsumableDoneCardProps) {
 
       {!!doneDate && <Text>{new Date(doneDate).toLocaleDateString()}</Text>}
 
-      {tags && tags.map((tag: any) => <Text key={tag}>{tag}</Text>)}
+      {tags && tags.map((tag) => <Text key={tag}>{tag}</Text>)}
 
       <Button
         testID={`${name}-share-button`}
