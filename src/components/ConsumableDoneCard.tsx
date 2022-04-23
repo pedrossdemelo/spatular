@@ -5,7 +5,7 @@ import * as Linking from "expo-linking";
 import { useRecipeList } from "hooks";
 import React, { useState } from "react";
 import { Button, Image, Pressable, Text, View } from "react-native";
-import tw from "twrnc";
+import tw from "styles";
 
 const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
 

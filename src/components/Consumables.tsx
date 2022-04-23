@@ -3,7 +3,7 @@ import { useDataDbApi } from "hooks";
 import React, { useState } from "react";
 import { Image, Pressable, ScrollView, Text } from "react-native";
 import { drinkApi, foodApi } from "services";
-import tw from "twrnc";
+import tw from "styles";
 import { Drink, Meal } from "utils";
 
 interface ConsumableCardProps {

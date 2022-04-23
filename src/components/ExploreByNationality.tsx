@@ -10,7 +10,7 @@ import {
   Text,
 } from "react-native";
 import { foodApi } from "services";
-import tw from "twrnc";
+import tw from "styles";
 import { Meal } from "utils";
 
 function capitalize(str: string) {

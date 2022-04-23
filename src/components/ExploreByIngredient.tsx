@@ -2,7 +2,7 @@ import { useDataDbApi } from "hooks";
 import React from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 import { drinkApi, foodApi } from "services";
-import tailwind from "twrnc";
+import tailwind from "styles";
 import { parseIngredients } from "utils";
 
 interface ExploreByIngredientProps {

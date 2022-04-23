@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { Button, Image, Pressable, ScrollView, Text, View } from "react-native";
 import YoutubeIframe from "react-native-youtube-iframe";
 import { drinkApi, foodApi } from "services";
-import tw from "twrnc";
+import tw from "styles";
 import { ParsedRecipe } from "utils";
 
 const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);

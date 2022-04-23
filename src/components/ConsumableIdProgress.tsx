@@ -4,7 +4,7 @@ import * as Linking from "expo-linking";
 import { useProgressIngredients, useRecipeList } from "hooks";
 import React, { useState } from "react";
 import { Button, Image, Pressable, ScrollView, Text } from "react-native";
-import tw from "twrnc";
+import tw from "styles";
 import { ParsedRecipe } from "utils";
 
 type Extract<T> = T extends (infer U)[] ? U : never;

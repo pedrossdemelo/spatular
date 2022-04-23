@@ -3,7 +3,7 @@ import { useAuth } from "hooks";
 import React from "react";
 import { Button, TextInput } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import tailwind from "twrnc";
+import tw from "styles";
 
 function Login() {
   const navigation = useNavigation<any>();
@@ -11,6 +11,7 @@ function Login() {
   const [email, setEmail] = React.useState("");
 
   const [password, setPassword] = React.useState("");
+
   const { login } = useAuth();
 
   const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -25,7 +26,7 @@ function Login() {
   return (
     <SafeAreaView>
       <TextInput
-        style={tailwind`m-2 p-2 bg-slate-50 rounded-lg`}
+        style={tw`m-2 p-2 bg-slate-50 rounded-lg`}
         value={email}
         placeholder="Email"
         testID="Email"
@@ -33,7 +34,7 @@ function Login() {
       />
 
       <TextInput
-        style={tailwind`m-2 p-2 bg-slate-50 rounded-lg`}
+        style={tw`m-2 p-2 bg-slate-50 rounded-lg`}
         value={password}
         placeholder="Password"
         onChangeText={setPassword}
