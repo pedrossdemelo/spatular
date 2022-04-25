@@ -29,9 +29,17 @@ function ProfileStack() {
     >
       <Stack.Screen name="Profile" component={Profile} />
 
-      <Stack.Screen name="DoneRecipes" component={DoneRecipes} />
+      <Stack.Screen
+        options={{ title: "Done recipes" }}
+        name="DoneRecipes"
+        component={DoneRecipes}
+      />
 
-      <Stack.Screen name="FavoriteRecipes" component={FavoriteRecipes} />
+      <Stack.Screen
+        options={{ title: "Favorite recipes" }}
+        name="FavoriteRecipes"
+        component={FavoriteRecipes}
+      />
     </Stack.Navigator>
   );
 }
