@@ -1,7 +1,7 @@
 module.exports = {
   theme: {
     fontFamily: {
-      overpass: ["overpass", "sans-serif"],
+      lato: ["lato", "sans-serif"],
       dmsans: ["dmsans", "sans-serif"],
     },
   },
