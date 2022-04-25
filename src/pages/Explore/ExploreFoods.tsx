@@ -24,9 +24,9 @@ export default function ExploreFoods() {
       },
     } = await Api.fetchJson(url);
 
-    const { id } = parseRecipe(food);
+    const { id, name } = parseRecipe(food);
 
-    navigate("FoodsStack", { screen: "FoodId", params: { id } });
+    navigate("FoodsStack", { screen: "FoodId", params: { id, title: name } });
   };
 
   return (

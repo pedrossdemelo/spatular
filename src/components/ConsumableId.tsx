@@ -58,9 +58,9 @@ export default function ConsumableId(props: ConsumableIdProps) {
     setShareText("Link copied!");
   };
 
-  const handleClick = () => {
+  const handleRecipeProgressButton = () => {
     if (!isInProgress) startRecipe(data);
-    navigation.navigate(`${capitalize(type)}IdProgress`, { id });
+    navigation.navigate(`${capitalize(type)}IdProgress`, { id, title: name });
   };
 
   return (
@@ -125,7 +125,7 @@ export default function ConsumableId(props: ConsumableIdProps) {
       <Pressable
         style={tw`absolute bottom-0 right-0`}
         accessibilityRole="button"
-        onPress={handleClick}
+        onPress={handleRecipeProgressButton}
       >
         <Text>{isInProgress ? "Continue" : "Start"} Recipe</Text>
       </Pressable>

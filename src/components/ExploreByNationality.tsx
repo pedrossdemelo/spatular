@@ -43,11 +43,11 @@ export default function ExploreByNationality(props: ExploreByNationalityProps) {
   });
 
   const { navigate } = useNavigation();
-  const goToId = (id: any) => () =>
+  const goToId = (id: string, name: string) => () =>
     // @ts-expect-error
     navigate(`${capitalize(type)}sStack`, {
       screen: `${capitalize(type)}Id`,
-      params: { id },
+      params: { id, title: name },
     });
 
   return (
@@ -69,7 +69,7 @@ export default function ExploreByNationality(props: ExploreByNationalityProps) {
       ) : (
         <>
           {results.map(({ name, image, id }) => (
-            <Pressable key={name} onPress={goToId(id)}>
+            <Pressable key={name} onPress={goToId(id, name)}>
               <Image
                 source={{ uri: image }}
                 accessibilityLabel={name}

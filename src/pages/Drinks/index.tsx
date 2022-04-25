@@ -28,9 +28,23 @@ function DrinksStack() {
     >
       <Stack.Screen name="Drinks" component={Drinks} />
 
-      <Stack.Screen name="DrinkId" component={DrinkId} />
+      <Stack.Screen
+        options={({ route }) => ({
+          // @ts-expect-error
+          title: route.params?.title ?? "Drink",
+        })}
+        name="DrinkId"
+        component={DrinkId}
+      />
 
-      <Stack.Screen name="DrinkIdProgress" component={DrinkIdProgress} />
+      <Stack.Screen
+        options={({ route }) => ({
+          // @ts-expect-error
+          title: `${route.params?.title ?? "Drink"} progress`,
+        })}
+        name="DrinkIdProgress"
+        component={DrinkIdProgress}
+      />
     </Stack.Navigator>
   );
 }

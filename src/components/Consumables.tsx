@@ -21,7 +21,7 @@ function ConsumableCard({ data }: ConsumableCardProps) {
 
   const page = type === "food" ? "FoodId" : "DrinkId";
 
-  const goToId = () => navigate(page, { id });
+  const goToId = () => navigate(page, { id, title: name });
 
   return (
     <Pressable
