@@ -1,5 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useSx } from "dripsy";
 import React from "react";
+import tw from "styles";
 import Explore from "./Explore";
 import ExploreDrinks from "./ExploreDrinks";
 import ExploreDrinksByIngredient from "./ExploreDrinksByIngredient";
@@ -19,8 +21,18 @@ type ExploreStackParamsList = {
 const Stack = createNativeStackNavigator<ExploreStackParamsList>();
 
 function ExploreStack() {
+  const sx = useSx();
+
   return (
-    <Stack.Navigator initialRouteName="Explore">
+    <Stack.Navigator
+      screenOptions={{
+        animation: "slide_from_right",
+        headerTitleAlign: "center",
+        headerTitleStyle: sx(tw`font-dmsans font-medium`),
+        headerBackTitleStyle: sx(tw`font-dmsans`),
+      }}
+      initialRouteName="Explore"
+    >
       <Stack.Screen name="Explore" component={Explore} />
 
       <Stack.Screen name="ExploreDrinks" component={ExploreDrinks} />

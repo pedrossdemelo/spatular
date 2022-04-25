@@ -1,4 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useSx } from "dripsy";
+import tw from "styles";
 import DoneRecipes from "./DoneRecipes";
 import FavoriteRecipes from "./FavoriteRecipes";
 import Profile from "./Profile";
@@ -12,8 +14,18 @@ type ProfileStackParamsList = {
 const Stack = createNativeStackNavigator<ProfileStackParamsList>();
 
 function ProfileStack() {
+  const sx = useSx();
+
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        animation: "slide_from_right",
+        headerTitleAlign: "center",
+        headerTitleStyle: sx(tw`font-dmsans font-medium`),
+        headerBackTitleStyle: sx(tw`font-dmsans`),
+      }}
+      initialRouteName="Profile"
+    >
       <Stack.Screen name="Profile" component={Profile} />
 
       <Stack.Screen name="DoneRecipes" component={DoneRecipes} />
