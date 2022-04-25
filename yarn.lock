@@ -1335,10 +1335,10 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/dm-sans/-/dm-sans-0.2.2.tgz#66bfead953b9ab03ad029bfc19a882ee1f731416"
   integrity sha512-N3bBC9igoebddvQ6+0mnmRV3OF0CtzT/NSzrztWZ7cez1oG6MplA/7e1EMKyGGkhdCUNwjqDJOk+ggEzFyz7KQ==
 
-"@expo-google-fonts/overpass@^0.2.2":
+"@expo-google-fonts/lato@^0.2.2":
   version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/overpass/-/overpass-0.2.2.tgz#aeabced1ca5019426f2e49d699d7c393de30da94"
-  integrity sha512-BDZw4NTe7G6SNHWG/iosEybj8xBKiYapPChnG5WC8yeoecFe/eL5LwO84pVyPPwprEYk381pnkEQWLfWwng1gg==
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/lato/-/lato-0.2.2.tgz#777a757a74c03a2677ed33dacd7df61cd65b735e"
+  integrity sha512-axw+QWJYyDHuj/W0364OFRu5MyNEU332up1bE6o4K7fP0e0mSDgocof7Eip4AP65SmP8zsPIR0LtJezORnkDBw==
 
 "@expo/config-plugins@4.0.6":
   version "4.0.6"
@@ -1538,7 +1538,7 @@
   dependencies:
     cross-spawn "^6.0.5"
 
-"@expo/vector-icons@^12.0.4":
+"@expo/vector-icons@^12.0.0", "@expo/vector-icons@^12.0.4":
   version "12.0.5"
   resolved "https://registry.npmjs.org/@expo/vector-icons/-/vector-icons-12.0.5.tgz"
   integrity sha512-zWvHBmkpbi1KrPma6Y+r/bsGI6MjbM1MBSe6W9A4uYMLhNI5NR4JtTnqxhf7g1XdpaDtBdv5aOWKEx4d5rxnhg==
@@ -6582,6 +6582,13 @@ hyphenate-style-name@^1.0.2, hyphenate-style-name@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/hyphenate-style-name/-/hyphenate-style-name-1.0.4.tgz"
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
+
+iconsax-react-native@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/iconsax-react-native/-/iconsax-react-native-0.0.8.tgz#7e80737c98acc63fbb3c327fcb48b1d9095b84c1"
+  integrity sha512-iEQku/mu5Tuq5hBdEtQ3nhQJ0iPSmJj1lUu8PibSD9kPgIesA/gPCqU0U29l78l+LOUMgus8eTJZ0+1LJxUo3Q==
+  dependencies:
+    prop-types "^15.7.2"
 
 iconv-lite@0.4.24:
   version "0.4.24"
