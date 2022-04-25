@@ -28,8 +28,9 @@ function ExploreStack() {
       screenOptions={{
         animation: "slide_from_right",
         headerTitleAlign: "center",
-        headerTitleStyle: sx(tw`font-dmsans font-medium`),
+        headerTitleStyle: sx(tw`font-dmsans font-medium text-slate-900`),
         headerBackTitleStyle: sx(tw`font-dmsans`),
+        headerTintColor: sx(tw`text-orange-600`).color,
       }}
       initialRouteName="Explore"
     >
@@ -48,19 +49,19 @@ function ExploreStack() {
       />
 
       <Stack.Screen
-        options={{ title: "Drinks By Ingredient" }}
+        options={{ title: "Drinks by ingredient" }}
         name="ExploreDrinksByIngredient"
         component={ExploreDrinksByIngredient}
       />
 
       <Stack.Screen
-        options={{ title: "Foods By Ingredient" }}
+        options={{ title: "Foods by ingredient" }}
         name="ExploreFoodsByIngredient"
         component={ExploreFoodsByIngredient}
       />
 
       <Stack.Screen
-        options={{ title: "Foods By Nationality" }}
+        options={{ title: "Foods by nationality" }}
         name="ExploreFoodsByNationality"
         component={ExploreFoodsByNationality}
       />

@@ -21,8 +21,9 @@ function DrinksStack() {
       screenOptions={{
         animation: "slide_from_right",
         headerTitleAlign: "center",
-        headerTitleStyle: sx(tw`font-dmsans font-medium`),
+        headerTitleStyle: sx(tw`font-dmsans font-medium text-slate-900`),
         headerBackTitleStyle: sx(tw`font-dmsans`),
+        headerTintColor: sx(tw`text-orange-600`).color,
       }}
       initialRouteName="Drinks"
     >
