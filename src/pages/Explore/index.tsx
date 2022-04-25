@@ -35,21 +35,32 @@ function ExploreStack() {
     >
       <Stack.Screen name="Explore" component={Explore} />
 
-      <Stack.Screen name="ExploreDrinks" component={ExploreDrinks} />
-
-      <Stack.Screen name="ExploreFoods" component={ExploreFoods} />
+      <Stack.Screen
+        options={{ title: "Drinks" }}
+        name="ExploreDrinks"
+        component={ExploreDrinks}
+      />
 
       <Stack.Screen
+        options={{ title: "Foods" }}
+        name="ExploreFoods"
+        component={ExploreFoods}
+      />
+
+      <Stack.Screen
+        options={{ title: "Drinks By Ingredient" }}
         name="ExploreDrinksByIngredient"
         component={ExploreDrinksByIngredient}
       />
 
       <Stack.Screen
+        options={{ title: "Foods By Ingredient" }}
         name="ExploreFoodsByIngredient"
         component={ExploreFoodsByIngredient}
       />
 
       <Stack.Screen
+        options={{ title: "Foods By Nationality" }}
         name="ExploreFoodsByNationality"
         component={ExploreFoodsByNationality}
       />
