@@ -1,10 +1,13 @@
 import * as DMSans from "@expo-google-fonts/dm-sans";
 import * as Lato from "@expo-google-fonts/lato";
 import { useFonts } from "expo-font";
-import { useEffect } from "react";
+import * as Navigation from "expo-navigation-bar";
+import { useEffect, useState } from "react";
 import { Platform } from "react-native";
 
 export default function useAppSettings() {
+  const [isLoading, setLoading] = useState(true);
+
   const [loadedFonts] = useFonts({
     "lato-light": Lato.Lato_300Light,
     lato: Lato.Lato_400Regular,
@@ -16,13 +19,22 @@ export default function useAppSettings() {
   });
 
   useEffect(() => {
-    if (Platform.OS === "web" && document) {
-      const root = document.getElementById("root");
-      root && (root.style.overflow = "hidden");
-    }
+    (async () => {
+      setLoading(true);
+      if (Platform.OS === "web") {
+        const root = document.getElementById("root");
+        root && (root.style.overflow = "hidden");
+      }
+      if (Platform.OS === "android") {
+        await Navigation.setPositionAsync("absolute");
+        await Navigation.setBackgroundColorAsync("#ffffff01");
+        await Navigation.setButtonStyleAsync("light");
+      }
+      setLoading(false);
+    })();
   }, []);
 
-  const loading = !loadedFonts;
+  const loading = !loadedFonts || isLoading;
 
   return [loading];
 }
