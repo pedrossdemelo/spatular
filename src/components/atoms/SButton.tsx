@@ -69,7 +69,7 @@ function SButton(props: SButtonProps) {
 
   const textStyle = tw.style(
     text,
-    "font-dmsans font-medium text-[17px]",
+    "font-dmsans font-medium text-[17px] tracking-wide",
     textSx,
     startIcon && "pl-2",
     endIcon && "pr-2",
@@ -89,11 +89,11 @@ function SButton(props: SButtonProps) {
               "worklet";
 
               return {
-                opacity: (hovered || pressed) && disabled !== true ? 0.5 : 1,
+                opacity: (hovered || pressed) && disabled !== true ? 0.66 : 1,
                 scale: pressed ? 0.98 : 1,
               };
             },
-          [],
+          [disabled],
         )}
         transition={{ type: "timing", duration: 150 }}
       >
