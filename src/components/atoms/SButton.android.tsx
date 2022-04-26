@@ -58,7 +58,7 @@ function SButton(props: SButtonProps) {
 
   const textStyle = tw.style(
     text,
-    "font-dmsans font-medium text-[17px]",
+    "font-dmsans font-medium text-[17px] tracking-wide",
     textSx,
     startIcon && "ml-2",
     endIcon && "mr-2",
