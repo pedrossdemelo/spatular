@@ -65,7 +65,7 @@ function SButton(props: SButtonProps) {
   );
 
   const innerStyle = parse(
-    tw.style("px-2 h-9 flex-row items-center justify-between", inner, sx),
+    tw.style("px-2 h-9 flex-row items-center justify-center", inner, sx),
   );
 
   const outerStyle = tw.style("rounded-lg", outer, outerSx, "overflow-hidden");

@@ -61,7 +61,7 @@ function SButton(props: SButtonProps) {
       "rounded-lg",
       outer,
       outerSx,
-      "px-2 h-9 flex-row items-center justify-between",
+      "px-2 h-9 flex-row items-center justify-center",
       inner,
       sx,
     ),
