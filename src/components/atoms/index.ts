@@ -1,2 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-export { default as SButton } from "./SButton";
+export { default as ImageTouchableFeedback } from "./ImageTouchableFeedback";
+export { default as ImageTouchableGradient } from "./ImageTouchableGradient";
+export { default as SButton } from "./SButton.android";
