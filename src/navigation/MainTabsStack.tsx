@@ -4,7 +4,9 @@ import DrinksStack from "pages/Drinks";
 import ExploreStack from "pages/Explore";
 import FoodsStack from "pages/Foods";
 import ProfileStack from "pages/Profile";
+import { ComponentProps } from "react";
 import tw from "styles";
+import { useDeviceContext } from "twrnc";
 
 export type MainTabsParamsList = {
   ExploreStack: undefined;
@@ -16,6 +18,8 @@ export type MainTabsParamsList = {
 const MainTabs = createBottomTabNavigator<MainTabsParamsList>();
 
 function MainTabsStack() {
+  useDeviceContext(tw);
+
   return (
     <MainTabs.Navigator
       initialRouteName="ExploreStack"
@@ -26,7 +30,7 @@ function MainTabsStack() {
         lazy: false,
         // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: ({ color, size }) => {
-          let iconName;
+          let iconName: ComponentProps<typeof MaterialCommunityIcons>["name"];
 
           switch (route.name) {
             case "ExploreStack":
@@ -42,20 +46,15 @@ function MainTabsStack() {
               iconName = "account";
               break;
             default:
-              iconName = "unknown";
+              iconName = "file-question";
               break;
           }
 
           return (
-            <MaterialCommunityIcons
-              name={iconName as any}
-              size={size}
-              color={color}
-            />
+            <MaterialCommunityIcons name={iconName} size={size} color={color} />
           );
         },
-        tabBarActiveTintColor: tw`text-orange-600`.color,
-        tabBarInactiveTintColor: tw`text-slate-400`.color,
+        tabBarInactiveTintColor: tw`text-slate-400 dark:text-neutral-600`.color,
         tabBarLabelStyle: tw`font-dmsans`,
         tabBarAccessibilityLabel: "anchor",
       })}

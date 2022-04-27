@@ -1,6 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useSx } from "dripsy";
+import { getStackNavigatorTheme } from "navigation";
 import tw from "styles";
+import { useDeviceContext } from "twrnc";
 import DrinkId from "./DrinkId";
 import DrinkIdProgress from "./DrinkIdProgress";
 import Drinks from "./Drinks";
@@ -14,17 +16,13 @@ type DrinksStackParamsList = {
 const Stack = createNativeStackNavigator<DrinksStackParamsList>();
 
 function DrinksStack() {
+  useDeviceContext(tw);
+
   const sx = useSx();
 
   return (
     <Stack.Navigator
-      screenOptions={{
-        animation: "slide_from_right",
-        headerTitleAlign: "center",
-        headerTitleStyle: sx(tw`font-dmsans font-medium text-slate-900`),
-        headerBackTitleStyle: sx(tw`font-dmsans`),
-        headerTintColor: sx(tw`text-orange-600`).color,
-      }}
+      screenOptions={getStackNavigatorTheme(sx, tw)}
       initialRouteName="Drinks"
     >
       <Stack.Screen name="Drinks" component={Drinks} />

@@ -1,6 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useSx } from "dripsy";
+import { getStackNavigatorTheme } from "navigation";
 import tw from "styles";
+import { useDeviceContext } from "twrnc";
 import DoneRecipes from "./DoneRecipes";
 import FavoriteRecipes from "./FavoriteRecipes";
 import Profile from "./Profile";
@@ -14,17 +16,13 @@ type ProfileStackParamsList = {
 const Stack = createNativeStackNavigator<ProfileStackParamsList>();
 
 function ProfileStack() {
+  useDeviceContext(tw);
+
   const sx = useSx();
 
   return (
     <Stack.Navigator
-      screenOptions={{
-        animation: "slide_from_right",
-        headerTitleAlign: "center",
-        headerTitleStyle: sx(tw`font-dmsans font-medium text-slate-900`),
-        headerBackTitleStyle: sx(tw`font-dmsans`),
-        headerTintColor: sx(tw`text-orange-600`).color,
-      }}
+      screenOptions={getStackNavigatorTheme(sx, tw)}
       initialRouteName="Profile"
     >
       <Stack.Screen name="Profile" component={Profile} />
