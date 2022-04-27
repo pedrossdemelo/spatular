@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DrinksStack from "pages/Drinks";
@@ -21,10 +20,11 @@ function MainTabsStack() {
     <MainTabs.Navigator
       initialRouteName="ExploreStack"
       backBehavior="history"
-      // @ts-ignore
+      // @ts-expect-error
       screenOptions={({ route }) => ({
         headerShown: false,
         lazy: false,
+        // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: ({ color, size }) => {
           let iconName;
 
