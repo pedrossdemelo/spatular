@@ -32,7 +32,11 @@ function ExploreStack() {
       screenOptions={getStackNavigatorTheme(sx, tw)}
       initialRouteName="Explore"
     >
-      <Stack.Screen name="Explore" component={Explore} />
+      <Stack.Screen
+        name="Explore"
+        options={{ headerShown: false }}
+        component={Explore}
+      />
 
       <Stack.Screen
         options={{ title: "Drinks" }}
@@ -41,7 +45,7 @@ function ExploreStack() {
       />
 
       <Stack.Screen
-        options={{ title: "Foods" }}
+        options={{ title: "Meals" }}
         name="ExploreFoods"
         component={ExploreFoods}
       />
@@ -53,13 +57,13 @@ function ExploreStack() {
       />
 
       <Stack.Screen
-        options={{ title: "Foods by ingredient" }}
+        options={{ title: "Meals by ingredient" }}
         name="ExploreFoodsByIngredient"
         component={ExploreFoodsByIngredient}
       />
 
       <Stack.Screen
-        options={{ title: "Foods by nationality" }}
+        options={{ title: "Meals by nationality" }}
         name="ExploreFoodsByNationality"
         component={ExploreFoodsByNationality}
       />
