@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useSx } from "dripsy";
-import { getStackNavigatorTheme } from "navigation";
+import { getStackNavigatorTheme } from "navigation/navigationThemes";
 import tw from "styles";
 import { useDeviceContext } from "twrnc";
 import DrinkId from "./DrinkId";
