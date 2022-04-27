@@ -1,32 +1,85 @@
 import { useNavigation } from "@react-navigation/native";
+import { ImageTouchableGradient } from "components/atoms";
+import { ScrollView, Text, View } from "dripsy";
+import { useDataDbApi } from "hooks";
 import React from "react";
-import { Pressable, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { drinkApi, foodApi } from "services";
 import tw from "styles";
+import { useDeviceContext } from "twrnc";
 
 export default function Explore() {
+  useDeviceContext(tw);
+
   const navigation = useNavigation<any>();
 
   const goToExploreDrinks = () => navigation.navigate("ExploreDrinks");
 
   const goToExploreFoods = () => navigation.navigate("ExploreFoods");
 
-  return (
-    <View>
-      <Pressable
-        onPress={goToExploreDrinks}
-        style={tw`flex justify-center items-center p-2 bg-slate-50 m-2 rounded-full`}
-        accessibilityRole="button"
-      >
-        <Text>Drinks</Text>
-      </Pressable>
+  const [[food]] = useDataDbApi(foodApi.getRandom());
 
-      <Pressable
-        onPress={goToExploreFoods}
-        style={tw`flex justify-center items-center p-2 bg-slate-50 m-2 rounded-full`}
-        accessibilityRole="button"
+  const [[drink]] = useDataDbApi(drinkApi.getRandom());
+
+  const { top } = useSafeAreaInsets();
+
+  return (
+    <ScrollView contentContainerSx={tw`grow pt-[${top}px]`}>
+      <View sx={tw`items-center mx-4 pt-4`}>
+        <View sx={tw`w-full px-3 max-w-100`}>
+          <Text
+            sx={tw`font-dmsans mb-1 text-4xl md:text-center dark:text-neutral-200 font-medium`}
+          >
+            Explore
+          </Text>
+
+          <Text sx={tw`dark:text-neutral-200 md:text-center`}>
+            Learn thousands of recipes from all around the world
+          </Text>
+        </View>
+      </View>
+
+      <View
+        sx={tw`my-4 mx-4 grow md:mb-12 md:flex-row md:mx-4 md:justify-center md:items-center`}
       >
-        <Text>Foods</Text>
-      </Pressable>
-    </View>
+        <ImageTouchableGradient
+          onPress={goToExploreFoods}
+          sx={tw`md:w-100 w-full max-w-100 self-center aspect-1 md:mx-2`}
+          source={food?.image}
+        >
+          <View sx={tw`absolute bottom-4 right-5`}>
+            <Text
+              sx={tw`text-2xl font-dmsans font-medium text-white text-right`}
+            >
+              Meals
+            </Text>
+
+            <Text sx={tw`font-lato text-sm text-white text-right`}>
+              The finest culinary
+            </Text>
+          </View>
+        </ImageTouchableGradient>
+
+        <View sx={tw`h-4`} />
+
+        <ImageTouchableGradient
+          onPress={goToExploreDrinks}
+          sx={tw`md:w-100 w-full max-w-100 self-center aspect-1 md:mx-2`}
+          source={drink?.image}
+        >
+          <View sx={tw`absolute bottom-4 right-5`}>
+            <Text
+              sx={tw`text-2xl font-dmsans font-medium text-white text-right`}
+            >
+              Drinks
+            </Text>
+
+            <Text sx={tw`font-lato text-sm text-white text-right`}>
+              Discover delicious flavours
+            </Text>
+          </View>
+        </ImageTouchableGradient>
+      </View>
+    </ScrollView>
   );
 }
