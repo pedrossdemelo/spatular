@@ -57,6 +57,7 @@ function MainTabsStack() {
         tabBarInactiveTintColor: tw`text-slate-400 dark:text-neutral-600`.color,
         tabBarLabelStyle: tw`font-dmsans`,
         tabBarAccessibilityLabel: "anchor",
+        tabBarStyle: tw`elevation-0 shadow-none`,
       })}
     >
       <MainTabs.Screen

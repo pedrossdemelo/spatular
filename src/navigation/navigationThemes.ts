@@ -1,6 +1,12 @@
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useSx } from "dripsy";
+import { ComponentProps } from "react";
 import tw from "styles";
 import { TailwindFn } from "twrnc";
+
+type NavigatorScreenOptions = ComponentProps<
+  ReturnType<typeof createNativeStackNavigator>["Navigator"]
+>["screenOptions"];
 
 export const LightTheme = {
   dark: false,
@@ -9,7 +15,7 @@ export const LightTheme = {
     background: tw.color("slate-100") as string,
     card: tw.color("slate-50") as string,
     text: tw.color("slate-800") as string,
-    border: tw.color("slate-200") as string,
+    border: "transparent" as string,
     notification: tw.color("orange-700") as string,
   },
 };
@@ -21,7 +27,7 @@ export const DarkTheme = {
     background: tw.color("black") as string,
     card: "#0c0c0c",
     text: tw.color("neutral-200") as string,
-    border: tw.color("neutral-800") as string,
+    border: "transparent" as string,
     notification: tw.color("orange-700") as string,
   },
 };
@@ -31,7 +37,7 @@ export function getStackNavigatorTheme(
   // eslint-disable-next-line @typescript-eslint/no-shadow
   tw: TailwindFn,
 ) {
-  return {
+  const theme: NavigatorScreenOptions = {
     animation: "slide_from_right",
     headerTitleAlign: "center",
     headerTitleStyle: sx(
@@ -39,5 +45,8 @@ export function getStackNavigatorTheme(
     ),
     headerBackTitleStyle: sx(tw`font-dmsans`),
     headerTintColor: tw.color("orange-600") as string,
+    headerShadowVisible: false,
   } as const;
+
+  return theme;
 }
