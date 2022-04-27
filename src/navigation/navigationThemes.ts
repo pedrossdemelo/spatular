@@ -11,24 +11,24 @@ type NavigatorScreenOptions = ComponentProps<
 export const LightTheme = {
   dark: false,
   colors: {
-    primary: tw.color("orange-600") as string,
-    background: tw.color("slate-100") as string,
-    card: tw.color("slate-50") as string,
-    text: tw.color("slate-800") as string,
-    border: "transparent" as string,
-    notification: tw.color("orange-700") as string,
+    primary: tw.color("orange-600")!,
+    background: tw.color("slate-100")!,
+    card: tw.color("slate-50")!,
+    text: tw.color("slate-800")!,
+    border: "transparent"!,
+    notification: tw.color("orange-700")!,
   },
 };
 
 export const DarkTheme = {
   dark: true,
   colors: {
-    primary: tw.color("orange-600") as string,
-    background: tw.color("black") as string,
-    card: "#0c0c0c",
-    text: tw.color("neutral-200") as string,
-    border: "transparent" as string,
-    notification: tw.color("orange-700") as string,
+    primary: tw.color("orange-600")!,
+    background: "#101010",
+    card: tw.color("neutral-900"),
+    text: tw.color("neutral-200")!,
+    border: "transparent"!,
+    notification: tw.color("orange-700")!,
   },
 };
 
@@ -44,7 +44,7 @@ export function getStackNavigatorTheme(
       tw`font-dmsans font-medium text-slate-900 dark:text-neutral-200`,
     ),
     headerBackTitleStyle: sx(tw`font-dmsans`),
-    headerTintColor: tw.color("orange-600") as string,
+    headerTintColor: tw.color("orange-600")!,
     headerShadowVisible: false,
   } as const;
 
