@@ -25,7 +25,11 @@ function ProfileStack() {
       screenOptions={getStackNavigatorTheme(sx, tw)}
       initialRouteName="Profile"
     >
-      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Profile"
+        component={Profile}
+      />
 
       <Stack.Screen
         options={{ title: "Done recipes" }}

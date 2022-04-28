@@ -1,7 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
+import { Image, Pressable, ScrollView, Text } from "dripsy";
 import { useDataDbApi } from "hooks";
 import React, { useState } from "react";
-import { Image, Pressable, ScrollView, Text } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { drinkApi, foodApi } from "services";
 import tw from "styles";
 import { Drink, Meal } from "utils";
@@ -88,8 +89,10 @@ export default function Consumables(props: ConsumablesProps) {
     limit: 5,
   });
 
+  const { top } = useSafeAreaInsets();
+
   return (
-    <ScrollView>
+    <ScrollView contentContainerSx={tw`pt-[${top}px]`}>
       {categories.map((category) => (
         <CategoryChip
           selected={category === selectedCategory}

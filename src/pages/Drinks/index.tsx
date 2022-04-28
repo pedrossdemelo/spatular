@@ -25,7 +25,11 @@ function DrinksStack() {
       screenOptions={getStackNavigatorTheme(sx, tw)}
       initialRouteName="Drinks"
     >
-      <Stack.Screen name="Drinks" component={Drinks} />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Drinks"
+        component={Drinks}
+      />
 
       <Stack.Screen
         options={({ route }) => ({

@@ -1,7 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
+import { SButton } from "components/atoms";
+import { ScrollView, Text } from "dripsy";
+import { useAuth, useRecipeList } from "hooks";
 import React from "react";
-import { Button, ScrollView, Text } from "react-native";
-import { useAuth, useRecipeList } from "../../hooks";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import tw from "styles";
 
 function Profile() {
   const { user, logout } = useAuth();
@@ -26,15 +29,27 @@ function Profile() {
 
   const goToFavoriteRecipes = () => navigation.navigate("FavoriteRecipes");
 
+  const { top } = useSafeAreaInsets();
+
   return (
-    <ScrollView>
+    <ScrollView contentContainerSx={tw`pt-[${top}px]`}>
       <Text>{email}</Text>
 
-      <Button title="Done Recipes" onPress={goToDoneRecipes} />
+      <SButton textSx={tw`uppercase`} variant="text" onPress={goToDoneRecipes}>
+        Done Recipes
+      </SButton>
 
-      <Button title="Favorite Recipes" onPress={goToFavoriteRecipes} />
+      <SButton
+        textSx={tw`uppercase`}
+        variant="text"
+        onPress={goToFavoriteRecipes}
+      >
+        Favorite Recipes
+      </SButton>
 
-      <Button title="Logout" onPress={goLogout} />
+      <SButton textSx={tw`uppercase`} variant="text" onPress={goLogout}>
+        Logout
+      </SButton>
     </ScrollView>
   );
 }
