@@ -17,13 +17,13 @@ function Heading(props: HeadingProps) {
     <View sx={tw`items-center mx-4 pt-4`}>
       <View sx={tw`w-full px-3 max-w-${maxWidth}`}>
         <Text
-          sx={tw`font-dmsans text-slate-900 mb-1 text-4xl md:text-center dark:text-neutral-200 font-medium`}
+          sx={tw`font-dmsans text-stone-900 mb-1 text-4xl md:text-center dark:text-neutral-200 font-medium`}
         >
           {title}
         </Text>
 
         {!!subtitle && (
-          <Text sx={tw`dark:text-neutral-200 text-slate-900 md:text-center`}>
+          <Text sx={tw`dark:text-neutral-200 text-stone-900 md:text-center`}>
             {subtitle}
           </Text>
         )}

@@ -40,7 +40,7 @@ function Profile() {
 
       <View sx={tw`m-4 grow`}>
         <SButton
-          textSx={tw`uppercase text-slate-600 dark:text-neutral-200`}
+          textSx={tw`uppercase text-stone-600 dark:text-neutral-200`}
           onPress={goToDoneRecipes}
           endIcon="arrow-right"
           sx={tw`justify-between bg-white dark:bg-neutral-900`}
@@ -50,7 +50,7 @@ function Profile() {
         </SButton>
 
         <SButton
-          textSx={tw`uppercase text-slate-600 dark:text-neutral-200`}
+          textSx={tw`uppercase text-stone-600 dark:text-neutral-200`}
           onPress={goToFavoriteRecipes}
           endIcon="arrow-right"
           sx={tw`justify-between bg-white dark:bg-neutral-900`}

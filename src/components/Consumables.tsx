@@ -54,11 +54,11 @@ function CategoryChip(props: CategoryChipProps) {
       onPress={toggleSelected}
       outerSx={tw`rounded-full mr-2`}
       sx={tw.style(
-        "bg-slate-200 dark:bg-neutral-800 h-8",
+        "bg-stone-200 dark:bg-neutral-800 h-8",
         selected && "bg-orange-600 dark:bg-orange-600",
       )}
       textSx={tw.style(
-        "text-slate-700 dark:text-neutral-200 text-sm",
+        "text-stone-700 dark:text-neutral-200 text-sm",
         selected && "text-white",
       )}
     >

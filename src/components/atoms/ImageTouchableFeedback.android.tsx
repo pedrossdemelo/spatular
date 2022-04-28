@@ -37,7 +37,7 @@ export default function ImageTouchableFeedback(
     <ImageBackground
       source={{ uri: source }}
       style={tw.style(
-        "overflow-hidden rounded-xl dark:bg-neutral-900 bg-slate-50",
+        "overflow-hidden rounded-xl dark:bg-neutral-900 bg-stone-50",
         outerSx as any,
       )}
       resizeMode="cover"

@@ -101,7 +101,7 @@ export default function ConsumableIdProgress(props: ConsumableIdProgressProps) {
           return (
             <Pressable
               style={tw`p-2 rounded-full ${
-                isChecked(ingredient) ? "bg-red-100" : "bg-slate-50"
+                isChecked(ingredient) ? "bg-red-100" : "bg-stone-50"
               }`}
               testID={`ingredient-${index}`}
               onPress={toggleChecked(ingredient)}

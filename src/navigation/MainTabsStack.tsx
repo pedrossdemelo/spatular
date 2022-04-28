@@ -54,7 +54,7 @@ function MainTabsStack() {
             <MaterialCommunityIcons name={iconName} size={size} color={color} />
           );
         },
-        tabBarInactiveTintColor: tw`text-slate-400 dark:text-neutral-600`.color,
+        tabBarInactiveTintColor: tw`text-stone-400 dark:text-neutral-600`.color,
         tabBarLabelStyle: tw`font-dmsans`,
         tabBarAccessibilityLabel: "anchor",
         tabBarStyle: tw`elevation-0 shadow-none`,

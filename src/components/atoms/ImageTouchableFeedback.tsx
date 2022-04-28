@@ -42,7 +42,7 @@ export default function ImageTouchableFeedback(
       onPress={onPress}
       accessibilityRole="button"
       style={parse(
-        tw.style("rounded-xl bg-slate-50 dark:bg-neutral-900", outerSx as any),
+        tw.style("rounded-xl bg-stone-50 dark:bg-neutral-900", outerSx as any),
       )}
       animate={useMemo(
         () =>
