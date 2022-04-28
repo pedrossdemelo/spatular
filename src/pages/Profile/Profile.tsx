@@ -45,6 +45,9 @@ function Profile() {
           endIcon="arrow-right"
           sx={tw`justify-between bg-white dark:bg-neutral-900`}
           outerSx={tw`mb-4`}
+          pressColor={
+            tw`text-stone-800/20 dark:text-neutral-100/20`.color as string
+          }
         >
           Done Recipes
         </SButton>
@@ -54,6 +57,9 @@ function Profile() {
           onPress={goToFavoriteRecipes}
           endIcon="arrow-right"
           sx={tw`justify-between bg-white dark:bg-neutral-900`}
+          pressColor={
+            tw`text-stone-800/20 dark:text-neutral-100/20`.color as string
+          }
         >
           Favorite Recipes
         </SButton>
