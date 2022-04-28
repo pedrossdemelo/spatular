@@ -37,13 +37,13 @@ export default function ExploreFoods() {
   return (
     <>
       <ScrollView contentContainerSx={tw`grow`}>
-        <View sx={tw`items-center m-4`}>
+        <View sx={tw`m-4`}>
           <ImageDescriptionGradient
             source="https://conagen.com/wp-content/uploads/2019/08/Food-Ingredients.jpg"
             onPress={goToExploreFoodsByIngredient}
             title="Explore by ingredient"
             subtitle="Find recipes with the ingredients you want"
-            sx={tw`w-full aspect-video web:w-screen mb-4`}
+            sx={tw`w-full aspect-video max-w-140 self-center mb-4`}
           />
 
           <ImageDescriptionGradient
@@ -51,7 +51,7 @@ export default function ExploreFoods() {
             onPress={goToExploreFoodsByNationality}
             title="Explore by nationality"
             subtitle="See what the world has to offer"
-            sx={tw`w-full aspect-video web:w-screen`}
+            sx={tw`w-full aspect-video max-w-140 self-center mb-4`}
           />
         </View>
       </ScrollView>

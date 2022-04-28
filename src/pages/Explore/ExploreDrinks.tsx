@@ -31,13 +31,13 @@ export default function ExploreDrinks() {
   return (
     <>
       <ScrollView contentContainerSx={tw`grow`}>
-        <View sx={tw`items-center m-4`}>
+        <View sx={tw`m-4`}>
           <ImageDescriptionGradient
             source="https://media.timeout.com/images/105631937/1372/772/image.jpg"
             onPress={goToExploreDrinksByIngredient}
             title="Explore by ingredient"
             subtitle="Find recipes with the ingredients you want"
-            sx={tw`w-full aspect-video web:w-screen mb-4`}
+            sx={tw`w-full aspect-video max-w-140 self-center mb-4`}
           />
         </View>
       </ScrollView>
