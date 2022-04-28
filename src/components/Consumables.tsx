@@ -28,7 +28,7 @@ function ConsumableCard({ data }: ConsumableCardProps) {
       testID={`${name}-card`}
       onPress={goToId}
       source={image}
-      sx={tw`w-full max-w-100 self-center aspect-video my-2`}
+      sx={tw`w-full max-w-140 self-center aspect-video my-2`}
       title={name}
       subtitle={data.category}
     />
@@ -95,6 +95,7 @@ export default function Consumables(props: ConsumablesProps) {
       <Heading
         title={type === "food" ? "Meals" : "Drinks"}
         subtitle={`Discover ${type}s from all around the world`}
+        maxWidth={140}
       />
 
       <ScrollView
