@@ -1,12 +1,15 @@
 import { useNavigation } from "@react-navigation/native";
-import { SButton } from "components/atoms";
-import { ScrollView, Text } from "dripsy";
+import { Heading, SButton } from "components/atoms";
+import { ScrollView, View } from "dripsy";
 import { useAuth, useRecipeList } from "hooks";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import tw from "styles";
+import { useDeviceContext } from "twrnc";
 
 function Profile() {
+  useDeviceContext(tw);
+
   const { user, logout } = useAuth();
   const { email = "Guest" } = user ?? {};
 
@@ -32,24 +35,41 @@ function Profile() {
   const { top } = useSafeAreaInsets();
 
   return (
-    <ScrollView contentContainerSx={tw`pt-[${top}px]`}>
-      <Text>{email}</Text>
+    <ScrollView contentContainerSx={tw`grow pt-[${top}px]`}>
+      <Heading title="Profile" subtitle={email} />
 
-      <SButton textSx={tw`uppercase`} variant="text" onPress={goToDoneRecipes}>
-        Done Recipes
-      </SButton>
+      <View sx={tw`m-4 grow`}>
+        <SButton
+          textSx={tw`uppercase text-slate-600 dark:text-neutral-200`}
+          onPress={goToDoneRecipes}
+          endIcon="arrow-right"
+          sx={tw`justify-between bg-white dark:bg-neutral-900`}
+          outerSx={tw`mb-4`}
+        >
+          Done Recipes
+        </SButton>
 
-      <SButton
-        textSx={tw`uppercase`}
-        variant="text"
-        onPress={goToFavoriteRecipes}
-      >
-        Favorite Recipes
-      </SButton>
+        <SButton
+          textSx={tw`uppercase text-slate-600 dark:text-neutral-200`}
+          onPress={goToFavoriteRecipes}
+          endIcon="arrow-right"
+          sx={tw`justify-between bg-white dark:bg-neutral-900`}
+        >
+          Favorite Recipes
+        </SButton>
 
-      <SButton textSx={tw`uppercase`} variant="text" onPress={goLogout}>
-        Logout
-      </SButton>
+        <View sx={tw`grow`} />
+
+        <SButton
+          textSx={tw`uppercase text-red-700 dark:text-red-400`}
+          sx={tw`bg-white justify-between dark:bg-neutral-900`}
+          onPress={goLogout}
+          pressColor={tw.color("red-600/30")}
+          endIcon="arrow-right"
+        >
+          Logout
+        </SButton>
+      </View>
     </ScrollView>
   );
 }
