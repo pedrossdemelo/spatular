@@ -1,10 +1,15 @@
 import { useNavigation } from "@react-navigation/native";
-import { Button, View } from "react-native";
+import { ImageDescriptionGradient, SButton } from "components/atoms";
+import { ScrollView, View } from "dripsy";
 import { foodApi } from "services";
 import Api from "services/Api";
+import tw from "styles";
+import { useDeviceContext } from "twrnc";
 import { parseRecipe } from "utils";
 
 export default function ExploreFoods() {
+  useDeviceContext(tw);
+
   const { navigate } = useNavigation<any>();
 
   const goToExploreFoodsByIngredient = () => {
@@ -30,12 +35,38 @@ export default function ExploreFoods() {
   };
 
   return (
-    <View>
-      <Button title="By Ingredient" onPress={goToExploreFoodsByIngredient} />
+    <>
+      <ScrollView contentContainerSx={tw`grow`}>
+        <View sx={tw`items-center m-4`}>
+          <ImageDescriptionGradient
+            source="https://conagen.com/wp-content/uploads/2019/08/Food-Ingredients.jpg"
+            onPress={goToExploreFoodsByIngredient}
+            title="Explore by ingredient"
+            subtitle="Find recipes with the ingredients you want"
+            sx={tw`w-full aspect-video web:w-screen mb-4`}
+          />
 
-      <Button title="By Nationality" onPress={goToExploreFoodsByNationality} />
+          <ImageDescriptionGradient
+            source="https://wordpress.soscuisine.com/2015/10/wordl-cuisine.jpg"
+            onPress={goToExploreFoodsByNationality}
+            title="Explore by nationality"
+            subtitle="See what the world has to offer"
+            sx={tw`w-full aspect-video web:w-screen`}
+          />
+        </View>
+      </ScrollView>
 
-      <Button title="Surprise Me!" onPress={goToRandomFood} />
-    </View>
+      <View style={tw.style("absolute bottom-4 right-4")}>
+        <SButton
+          endIcon="shuffle-variant"
+          onPress={goToRandomFood}
+          outerSx={tw`rounded-full shadow-lg shadow-orange-600 shadow-opacity-30`}
+          sx={tw`h-10 px-4`}
+          textSx={tw`uppercase`}
+        >
+          Surprise me
+        </SButton>
+      </View>
+    </>
   );
 }
