@@ -1,22 +1,21 @@
 import { useNavigation } from "@react-navigation/native";
-import { Image, Pressable, ScrollView, Text } from "dripsy";
+import { ScrollView, View } from "dripsy";
 import { useDataDbApi } from "hooks";
 import React, { useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { drinkApi, foodApi } from "services";
 import tw from "styles";
-import { Drink, Meal } from "utils";
+import { useDeviceContext } from "twrnc";
+import { Drink, Meal, ParsedRecipe } from "utils";
+import { Heading, ImageDescriptionGradient, SButton } from "./atoms";
 
 interface ConsumableCardProps {
-  data: {
-    name: string;
-    id: string;
-    image: string;
-    type: "drink" | "food";
-  };
+  data: ParsedRecipe;
 }
 
 function ConsumableCard({ data }: ConsumableCardProps) {
+  useDeviceContext(tw);
+
   const { navigate } = useNavigation<any>();
   const { name, image, type, id } = data;
 
@@ -25,19 +24,14 @@ function ConsumableCard({ data }: ConsumableCardProps) {
   const goToId = () => navigate(page, { id, title: name });
 
   return (
-    <Pressable
+    <ImageDescriptionGradient
       testID={`${name}-card`}
-      android_ripple={{ color: "black" }}
       onPress={goToId}
-    >
-      <Text>{name}</Text>
-
-      <Image
-        style={tw`h-20 aspect-square`}
-        source={{ uri: image }}
-        accessibilityLabel={name}
-      />
-    </Pressable>
+      source={image}
+      sx={tw`w-full max-w-100 self-center aspect-video my-2`}
+      title={name}
+      subtitle={data.category}
+    />
   );
 }
 
@@ -48,22 +42,28 @@ interface CategoryChipProps {
 }
 
 function CategoryChip(props: CategoryChipProps) {
+  useDeviceContext(tw);
+
   const { setter, children: category, selected } = props;
 
   const toggleSelected = () => (selected ? setter(null) : setter(category));
 
   return (
-    <Pressable
-      accessibilityRole="button"
+    <SButton
       testID={`${category}-filter`}
-      android_ripple={{ color: "black" }}
       onPress={toggleSelected}
-      style={tw` p-2 rounded-full bg-slate-200 m-1 ${
-        selected ? "bg-slate-400" : ""
-      }`}
+      outerSx={tw`rounded-full mr-2`}
+      sx={tw.style(
+        "bg-slate-200 dark:bg-neutral-800 h-8",
+        selected && "bg-orange-600 dark:bg-orange-600",
+      )}
+      textSx={tw.style(
+        "text-slate-700 dark:text-neutral-200 text-sm",
+        selected && "text-white",
+      )}
     >
-      <Text>{category}</Text>
-    </Pressable>
+      {category}
+    </SButton>
   );
 }
 
@@ -86,26 +86,39 @@ export default function Consumables(props: ConsumablesProps) {
 
   const [categories] = useDataDbApi(Api.getCategories(), {
     parser: ({ strCategory }: Meal | Drink) => strCategory,
-    limit: 5,
   });
 
   const { top } = useSafeAreaInsets();
 
   return (
-    <ScrollView contentContainerSx={tw`pt-[${top}px]`}>
-      {categories.map((category) => (
-        <CategoryChip
-          selected={category === selectedCategory}
-          key={category}
-          setter={setSelectedCategory}
-        >
-          {category}
-        </CategoryChip>
-      ))}
+    <ScrollView contentContainerSx={tw`grow pt-[${top}px]`}>
+      <Heading
+        title={type === "food" ? "Meals" : "Drinks"}
+        subtitle={`Discover ${type}s from all around the world`}
+      />
 
-      {consumables.map((consumable) => (
-        <ConsumableCard key={consumable.id} data={consumable} />
-      ))}
+      <ScrollView
+        sx={tw`mt-4`}
+        horizontal
+        showsHorizontalScrollIndicator={tw.prefixMatch("web") && false}
+        contentContainerSx={tw`pl-4 pr-2`}
+      >
+        {categories.map((category) => (
+          <CategoryChip
+            selected={category === selectedCategory}
+            key={category}
+            setter={setSelectedCategory}
+          >
+            {category}
+          </CategoryChip>
+        ))}
+      </ScrollView>
+
+      <View sx={tw`mx-4 mt-2`}>
+        {consumables.map((consumable) => (
+          <ConsumableCard key={consumable.id} data={consumable} />
+        ))}
+      </View>
     </ScrollView>
   );
 }
