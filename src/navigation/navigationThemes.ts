@@ -14,7 +14,7 @@ export const LightTheme = {
     primary: tw.color("orange-600")!,
     background: tw.color("stone-100")!,
     card: tw.color("stone-50")!,
-    text: tw.color("stone-800")!,
+    text: tw.color("stone-700")!,
     border: "transparent"!,
     notification: tw.color("orange-700")!,
   },
@@ -41,7 +41,7 @@ export function getStackNavigatorTheme(
     animation: "slide_from_right",
     headerTitleAlign: "center",
     headerTitleStyle: sx(
-      tw`font-dmsans font-medium text-stone-900 dark:text-neutral-200`,
+      tw`font-dmsans font-medium text-stone-800 dark:text-neutral-200`,
     ),
     headerBackTitleStyle: sx(tw`font-dmsans`),
     headerTintColor: tw.color("orange-600")!,
