@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import * as Icons from "@expo/vector-icons";
 import { Text, useSx, View } from "dripsy";
 import { MotiPressable } from "moti/interactions";
 import { ComponentProps, useMemo } from "react";
@@ -10,23 +10,36 @@ type Colors = "primary" | "secondary";
 
 type Variants = "outlined" | "contained" | "text";
 
-interface SButtonProps {
-  children: string;
+type Keys = Exclude<
+  keyof typeof Icons,
+  | "createIconSet"
+  | "createMultiStyleIconSet"
+  | "createMu"
+  | "createIconSetFromFontello"
+  | "createIconSetFromIcoMoon"
+>;
+
+interface SButtonProps<T extends Keys> {
+  children?: string;
   testID?: string;
   onPress: () => void;
   textSx?: { [key: string]: any };
   sx?: { [key: string]: any };
   outerSx?: { [key: string]: any };
-  startIcon?: ComponentProps<typeof MaterialCommunityIcons>["name"];
-  endIcon?: ComponentProps<typeof MaterialCommunityIcons>["name"];
+  startIcon?: ComponentProps<typeof Icons[T]>["name"];
+  endIcon?: ComponentProps<typeof Icons[T]>["name"];
   variant?: Variants;
   color?: Colors;
   // eslint-disable-next-line react/no-unused-prop-types
   pressColor?: string;
   disabled?: boolean;
+  // BUG: Typescript forces us to specify the type extending the generic type T to get intellisense
+  iconGallery?: T | Keys;
 }
 
-function SButton(props: SButtonProps) {
+function SButton<T extends Keys = "MaterialCommunityIcons">(
+  props: SButtonProps<T>,
+) {
   const {
     children,
     testID,
@@ -36,6 +49,7 @@ function SButton(props: SButtonProps) {
     variant = "contained",
     color = "primary",
     disabled = false,
+    iconGallery = "MaterialCommunityIcons",
   } = props;
 
   let { sx = {}, textSx = {}, outerSx = {} } = props;
@@ -75,6 +89,8 @@ function SButton(props: SButtonProps) {
     endIcon && "pr-2",
   );
 
+  const Icon = useMemo(() => Icons[iconGallery], [iconGallery]);
+
   return (
     <View testID={testID}>
       <MotiPressable
@@ -98,21 +114,13 @@ function SButton(props: SButtonProps) {
         transition={{ type: "timing", duration: 150 }}
       >
         {!!startIcon && (
-          <MaterialCommunityIcons
-            color={textStyle.color as string}
-            name={startIcon}
-            size={24}
-          />
+          <Icon color={textStyle.color as string} name={startIcon} size={24} />
         )}
 
-        <Text sx={textStyle}>{children}</Text>
+        {children && <Text sx={textStyle}>{children}</Text>}
 
         {!!endIcon && (
-          <MaterialCommunityIcons
-            color={textStyle.color as string}
-            name={endIcon}
-            size={24}
-          />
+          <Icon color={textStyle.color as string} name={endIcon} size={24} />
         )}
       </MotiPressable>
     </View>
