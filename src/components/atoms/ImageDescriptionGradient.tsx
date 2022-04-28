@@ -9,15 +9,21 @@ interface ImageDescriptionGradientProps {
   sx: StyleProp<ViewStyle>;
   title: string;
   subtitle?: string;
+  testID?: string;
 }
 
 export default function ImageDescriptionGradient(
   props: ImageDescriptionGradientProps,
 ) {
-  const { onPress, source, sx, title, subtitle } = props;
+  const { onPress, source, sx, title, subtitle, testID } = props;
 
   return (
-    <ImageTouchableGradient onPress={onPress} sx={sx} source={source}>
+    <ImageTouchableGradient
+      testID={testID}
+      onPress={onPress}
+      sx={sx}
+      source={source}
+    >
       <View sx={tw`absolute bottom-4 right-5`}>
         <Text sx={tw`text-2xl font-dmsans font-medium text-white text-right`}>
           {title}

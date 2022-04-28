@@ -17,6 +17,7 @@ interface ImageTouchableFeedbackProps {
   outerSx?: StyleProp<ViewStyle>;
   pressColor?: ColorValue;
   onPress?: () => void;
+  testID?: string;
 }
 
 export default function ImageTouchableFeedback(
@@ -30,6 +31,7 @@ export default function ImageTouchableFeedback(
     pressColor,
     sx,
     outerSx = {},
+    testID,
   } = props;
   useDeviceContext(tw);
 
@@ -57,6 +59,7 @@ export default function ImageTouchableFeedback(
       transition={{ type: "timing", duration: 100 }}
     >
       <ImageBackground
+        testID={testID}
         source={{ uri: source }}
         style={parse(tw.style("w-full h-full overflow-hidden rounded-xl"))}
         resizeMode="cover"
