@@ -96,8 +96,9 @@ export default function ConsumableId(props: ConsumableIdProps) {
 
         <View sx={tw`mx-4 my-2`}>
           <View sx={tw`flex-row items-start`}>
-            <View sx={tw`grow`}>
+            <View sx={tw`flex-1`}>
               <Text
+                numberOfLines={1}
                 sx={tw`text-stone-800 dark:text-neutral-200 text-2xl font-medium font-dmsans`}
               >
                 {name}
@@ -117,7 +118,7 @@ export default function ConsumableId(props: ConsumableIdProps) {
               testID="share-button"
               variant="text"
               color="secondary"
-              outerSx={tw`rounded-full`}
+              outerSx={tw`rounded-full ml-2`}
               onPress={copyUrl}
             />
 
