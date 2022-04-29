@@ -170,7 +170,7 @@ export default function ConsumableId(props: ConsumableIdProps) {
             <Text
               sx={tw`text-stone-600 leading-5 dark:text-neutral-400 mb-1.5`}
             >
-              {instructions.split("\n").join("\n\n")}
+              {instructions.replace(/\n+\s*\n*/g, "\n\n").trim()}
             </Text>
           </View>
         </View>
@@ -223,7 +223,7 @@ export default function ConsumableId(props: ConsumableIdProps) {
           endIcon="arrow-right"
           onPress={handleRecipeProgressButton}
           outerSx={tw`rounded-full shadow-lg shadow-orange-600 shadow-opacity-30`}
-          sx={tw`h-10 px-3`}
+          sx={tw`h-10 pl-4 pr-3`}
           textSx={tw`uppercase`}
         >
           {isInProgress ? "Continue recipe" : "Start recipe"}
