@@ -47,7 +47,7 @@ export default function ExploreDrinks() {
           endIcon="shuffle-variant"
           onPress={goToRandomDrink}
           outerSx={tw`rounded-full shadow-lg shadow-orange-600 shadow-opacity-30`}
-          sx={tw`h-10 px-4`}
+          sx={tw`h-10 px-3`}
           textSx={tw`uppercase`}
         >
           Surprise me
