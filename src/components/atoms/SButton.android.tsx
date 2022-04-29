@@ -20,7 +20,7 @@ type Keys = Exclude<
 >;
 
 interface SButtonProps<T extends Keys> {
-  children: string;
+  children?: string;
   testID?: string;
   onPress: () => void;
   textSx?: { [key: string]: any };
@@ -81,11 +81,19 @@ function SButton<T extends Keys = "MaterialCommunityIcons">(
     tw.style("px-2 h-9 flex-row items-center justify-center", inner, sx),
   );
 
-  const outerStyle = tw.style("rounded-lg", outer, outerSx, "overflow-hidden");
+  const outerStyle = tw.style(
+    "rounded-lg",
+    outer,
+    outerSx,
+    children && variant !== "text" && "overflow-hidden",
+  );
 
   const ripple = disabled
     ? TouchableNativeFeedback.Ripple("transparent", false)
-    : TouchableNativeFeedback.Ripple(pressColor || (press as string), false);
+    : TouchableNativeFeedback.Ripple(
+        pressColor || (press as string),
+        !children,
+      );
 
   const Icon = useMemo(() => Icons[iconGallery], [iconGallery]);
 
@@ -103,7 +111,7 @@ function SButton<T extends Keys = "MaterialCommunityIcons">(
           <Icon color={textStyle.color as string} name={startIcon} size={24} />
         )}
 
-        <Text sx={textStyle}>{children}</Text>
+        {children && <Text sx={textStyle}>{children}</Text>}
 
         {!!endIcon && (
           <Icon color={textStyle.color as string} name={endIcon} size={24} />
