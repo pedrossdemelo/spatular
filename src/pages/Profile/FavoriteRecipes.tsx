@@ -5,11 +5,13 @@ import { useRecipeList } from "hooks";
 import React, { useState } from "react";
 import tw from "styles";
 
+type Filters = "all" | "drink" | "food";
+
 function FavoriteRecipes() {
   const [favoriteRecipes] = useRecipeList("favoriteRecipes");
 
-  const [filter, setFilter] = useState("all");
-  const changeFilterTo = (newFilter: any) => () => setFilter(newFilter);
+  const [filter, setFilter] = useState<Filters>("all");
+  const changeFilterTo = (newFilter: Filters) => () => setFilter(newFilter);
 
   const filteredFavoriteRecipes = favoriteRecipes.filter((r) => {
     switch (filter) {
