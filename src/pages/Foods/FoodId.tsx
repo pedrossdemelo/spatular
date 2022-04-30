@@ -10,7 +10,14 @@ export default function FoodId({ route }: any) {
 
   const [[food], loading] = useDataDbApi(foodApi.getById(id));
 
-  if (loading) return <ActivityIndicator style={tw`mt-4`} />;
+  if (loading)
+    return (
+      <ActivityIndicator
+        size="large"
+        color={tw.color("orange-600")}
+        style={tw`mt-4`}
+      />
+    );
 
   return <ConsumableId data={food} />;
 }
