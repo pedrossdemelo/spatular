@@ -1,8 +1,9 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ConsumableDoneCard } from "components";
+import { FilterButton } from "components/atoms";
+import { ScrollView, View } from "dripsy";
 import { useRecipeList } from "hooks";
 import React, { useState } from "react";
-import { Button, ScrollView } from "react-native";
+import tw from "styles";
 
 function FavoriteRecipes() {
   const [favoriteRecipes] = useRecipeList("favoriteRecipes");
@@ -10,7 +11,7 @@ function FavoriteRecipes() {
   const [filter, setFilter] = useState("all");
   const changeFilterTo = (newFilter: any) => () => setFilter(newFilter);
 
-  const filteredDoneRecipes = favoriteRecipes.filter((r) => {
+  const filteredFavoriteRecipes = favoriteRecipes.filter((r) => {
     switch (filter) {
       case "all":
         return true;
@@ -27,38 +28,40 @@ function FavoriteRecipes() {
   });
 
   return (
-    <ScrollView>
-      <Button
-        testID="filter-all-button"
-        onPress={changeFilterTo("all")}
-        title="All"
-      />
+    <ScrollView contentContainerSx={tw`p-4 pb-0`}>
+      <View sx={tw`flex-row justify-around mb-4`}>
+        <FilterButton
+          selected={filter === "food"}
+          onPress={changeFilterTo}
+          value="food"
+        >
+          Meals
+        </FilterButton>
 
-      <Button
-        testID="filter-food-button"
-        onPress={changeFilterTo("food")}
-        title="Food"
-      />
+        <FilterButton
+          selected={filter === "all"}
+          onPress={changeFilterTo}
+          value="all"
+        >
+          All
+        </FilterButton>
 
-      <Button
-        testID="filter-drink-button"
-        onPress={changeFilterTo("drink")}
-        title="Drink"
-      />
+        <FilterButton
+          selected={filter === "drink"}
+          onPress={changeFilterTo}
+          value="drink"
+        >
+          Drinks
+        </FilterButton>
+      </View>
 
-      {filteredDoneRecipes.map((recipe) => (
-        <ConsumableDoneCard data={recipe as any} key={recipe.name} />
+      {filteredFavoriteRecipes.map((recipe) => (
+        <ConsumableDoneCard
+          sx={tw`w-full mb-4 aspect-video`}
+          data={recipe}
+          key={recipe.name}
+        />
       ))}
-
-      <Button
-        title="Clear async storage"
-        onPress={async () => {
-          const asyncStorageKeys = await AsyncStorage.getAllKeys();
-          if (asyncStorageKeys.length > 0) {
-            await AsyncStorage.multiRemove(asyncStorageKeys);
-          }
-        }}
-      />
     </ScrollView>
   );
 }
