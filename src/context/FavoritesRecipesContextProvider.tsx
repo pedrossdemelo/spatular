@@ -1,12 +1,12 @@
 import useLocalStorage from "hooks/useLocalStorage";
 import React, { createContext, useMemo } from "react";
-import { ParsedRecipe, parseFavoriteRecipe } from "utils";
-import { FavoriteRecipe } from "utils/parseFavoriteRecipe";
+import { parseFavoriteRecipe } from "utils";
+import { BaseRecipe, FavoriteRecipe } from "utils/parseFavoriteRecipe";
 
 export type FavoriteRecipesContextValue = readonly [
   FavoriteRecipe[],
-  (recipe: ParsedRecipe) => void,
-  (recipe: ParsedRecipe) => void,
+  (recipe: BaseRecipe) => void,
+  (recipe: BaseRecipe) => void,
   React.Dispatch<React.SetStateAction<FavoriteRecipe[]>>,
 ];
 
@@ -22,7 +22,7 @@ export function FavoritesRecipesContextProvider({ children }: Props) {
     FavoriteRecipe[]
   >("favoriteRecipes", []);
 
-  const addRecipe = (recipe: ParsedRecipe) => {
+  const addRecipe = (recipe: BaseRecipe) => {
     const newFavoritesRecipes = [
       ...favoritesRecipes,
       parseFavoriteRecipe(recipe),
@@ -30,7 +30,7 @@ export function FavoritesRecipesContextProvider({ children }: Props) {
     setFavoritesRecipes(newFavoritesRecipes);
   };
 
-  const removeRecipe = (recipe: ParsedRecipe) => {
+  const removeRecipe = (recipe: BaseRecipe) => {
     const newFavoritesRecipes = favoritesRecipes.filter(
       (r) => r.id !== recipe.id,
     );

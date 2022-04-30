@@ -1,13 +1,21 @@
-import { ParsedRecipe } from "./parseRecipe";
+export interface BaseRecipe {
+  id: string;
+  name: string;
+  type: "food" | "drink";
+  category?: string;
+  nationality?: string;
+  alcoholic?: string;
+  image: string;
+}
 
-export default function parseFavoriteRecipe(recipe: ParsedRecipe) {
+export default function parseFavoriteRecipe(recipe: BaseRecipe) {
   const {
     id,
     name,
     category = "",
     nationality = "",
     type,
-    alcoholic: alcoholicOrNot = "",
+    alcoholic = "",
     image,
   } = recipe;
 
@@ -17,7 +25,7 @@ export default function parseFavoriteRecipe(recipe: ParsedRecipe) {
     type,
     category,
     nationality,
-    alcoholicOrNot,
+    alcoholic,
     image,
   };
 }

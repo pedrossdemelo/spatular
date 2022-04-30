@@ -7,12 +7,15 @@ import { useRecipeList } from "hooks";
 import React from "react";
 import tw from "styles";
 import { useDeviceContext } from "twrnc";
+import { BaseRecipe } from "utils/parseFavoriteRecipe";
 import { ImageTouchableGradient, SButton } from "./atoms";
 
 const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
 
+type BaseOrDoneRecipe = Partial<DoneRecipe> & BaseRecipe;
+
 interface ConsumableDoneCardProps {
-  data: DoneRecipe;
+  data: BaseOrDoneRecipe;
   sx: { [key: string]: any };
 }
 
