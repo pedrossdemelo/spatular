@@ -34,7 +34,7 @@ function DoneRecipes() {
 
   return (
     <ScrollView contentContainerSx={tw`p-4 pb-0`}>
-      <View sx={tw`flex-row justify-around mb-4`}>
+      <View sx={tw`flex-row w-full max-w-140 self-center justify-around mb-4`}>
         <FilterButton
           selected={filter === "food"}
           onPress={changeFilterTo}
@@ -62,7 +62,7 @@ function DoneRecipes() {
 
       {filteredDoneRecipes.map((recipe) => (
         <ConsumableDoneCard
-          sx={tw`w-full mb-4 aspect-video`}
+          sx={tw`w-full max-w-140 self-center aspect-video mb-4`}
           data={recipe}
           key={recipe.name}
         />
