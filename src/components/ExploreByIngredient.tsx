@@ -1,9 +1,38 @@
+import { Image, Text, View } from "dripsy";
 import { useDataDbApi } from "hooks";
 import React from "react";
-import { Image, ScrollView, Text, View } from "react-native";
+import { ActivityIndicator, SectionList } from "react-native";
 import { drinkApi, foodApi } from "services";
-import tailwind from "styles";
+import tw from "styles";
+import { useDeviceContext } from "twrnc";
 import { parseIngredients } from "utils";
+import { Ingredient } from "utils/parseIngredients";
+
+type IngredientSection = {
+  title: string;
+  data: Ingredient[];
+};
+
+function convertToAlphabeticSections(ingredients: Ingredient[]) {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+  const sections: IngredientSection[] = [];
+
+  alphabet.forEach((letter) => {
+    const filtered = ingredients.filter((ingredient) =>
+      ingredient.name.startsWith(letter),
+    );
+
+    if (filtered.length > 0) {
+      sections.push({
+        title: letter,
+        data: filtered,
+      });
+    }
+  });
+
+  return sections;
+}
 
 interface ExploreByIngredientProps {
   type: "drink" | "food";
@@ -14,23 +43,83 @@ export default function ExploreByIngredient(props: ExploreByIngredientProps) {
 
   const Api = type === "drink" ? drinkApi : foodApi;
 
-  const [ingredients] = useDataDbApi(Api.getIngredients(), {
+  const [ingredients, loading] = useDataDbApi(Api.getIngredients(), {
     parser: parseIngredients,
   });
 
-  return (
-    <ScrollView>
-      {ingredients.map(({ name, image }) => (
-        <View key={name}>
-          <Image
-            accessibilityLabel={name}
-            source={{ uri: image }}
-            style={tailwind`h-10 aspect-square`}
-          />
+  const ingredientSections = convertToAlphabeticSections(ingredients);
 
-          <Text>{name}</Text>
-        </View>
-      ))}
-    </ScrollView>
+  useDeviceContext(tw);
+
+  if (loading)
+    return (
+      <ActivityIndicator
+        size="large"
+        color={tw.color("orange-600")}
+        style={tw`mt-4`}
+      />
+    );
+
+  return (
+    <SectionList
+      sections={ingredientSections}
+      renderItem={({ item }) => <IngredientCard data={item} />}
+      contentContainerStyle={tw`px-4`}
+      keyExtractor={(item) => item.name}
+      renderSectionHeader={({ section }) => {
+        const { title } = section;
+
+        return (
+          <View sx={tw`flex-row items-center mx-3 mt-3 mb-2`}>
+            <Text
+              sx={tw`text-4xl font-dmsans mr-4 text-stone-600 dark:text-neutral-400 font-bold`}
+            >
+              {title}
+            </Text>
+
+            <View
+              sx={tw`flex-1 h-[3px] -mt-1.5 rounded bg-stone-200 dark:bg-neutral-900`}
+            />
+          </View>
+        );
+      }}
+      stickySectionHeadersEnabled={false}
+    />
+  );
+}
+
+interface IngredientCardProps {
+  data: {
+    name: string;
+    image: string;
+  };
+}
+
+function IngredientCard({ data }: IngredientCardProps) {
+  const { image, name } = data;
+
+  return (
+    <View
+      sx={tw`flex-row rounded-lg items-center overflow-visible p-3 mb-4 bg-white dark:bg-neutral-900`}
+      key={name}
+    >
+      <View
+        sx={tw`overflow-visible rounded-full bg-stone-100 dark:bg-neutral-800`}
+      >
+        <Image
+          accessibilityLabel={name}
+          source={{
+            uri: image,
+          }}
+          sx={tw`h-14 aspect-square -mt-3 -mb-0`}
+        />
+      </View>
+
+      <Text
+        sx={tw`font-dmsans text-stone-800 dark:text-neutral-300 font-medium mx-4 text-lg grow`}
+      >
+        {name}
+      </Text>
+    </View>
   );
 }
