@@ -16,7 +16,7 @@ interface ImageTouchableFeedbackProps {
   sx?: StyleProp<ViewStyle>;
   outerSx?: StyleProp<ViewStyle>;
   pressColor?: ColorValue;
-  onPress?: () => void;
+  onPress: () => void;
   testID?: string;
 }
 
