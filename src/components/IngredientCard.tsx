@@ -1,22 +1,38 @@
+import { useNavigation } from "@react-navigation/native";
 import { Image, Text, View } from "dripsy";
 import React from "react";
 import tw from "styles";
 import { useDeviceContext } from "twrnc";
 import { STouchable } from "./atoms";
 
+const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
+
 interface IngredientCardProps {
   data: {
     name: string;
     image: string;
   };
+  type: "drink" | "food";
 }
-export default function IngredientCard({ data }: IngredientCardProps) {
+export default function IngredientCard(props: IngredientCardProps) {
+  const { data, type } = props;
   const { image, name } = data;
   useDeviceContext(tw);
 
+  const { navigate } = useNavigation<any>();
+
+  const searchForRecipe = () => {
+    navigate(`${capitalize(type)}sStack`, {
+      screen: `${capitalize(type)}s`,
+      params: {
+        query: `With: ${name}`,
+      },
+    });
+  };
+
   return (
     <STouchable
-      onPress={() => {}}
+      onPress={searchForRecipe}
       sx={tw`flex-row items-center overflow-visible p-3`}
       outerSx={tw`rounded-lg self-center w-full max-w-140 mb-4 bg-white dark:bg-neutral-900`}
       pressColor={

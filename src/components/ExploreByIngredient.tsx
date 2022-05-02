@@ -77,7 +77,7 @@ export default function ExploreByIngredient(props: ExploreByIngredientProps) {
 
       <SectionList
         sections={ingredientSections}
-        renderItem={({ item }) => <IngredientCard data={item} />}
+        renderItem={({ item }) => <IngredientCard type={type} data={item} />}
         contentContainerStyle={tw`pt-16 px-4`}
         keyExtractor={(item) => item.name}
         scrollEventThrottle={30}
