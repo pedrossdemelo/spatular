@@ -8,26 +8,30 @@ interface SearchBarProps {
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   placeholder: string;
+  sx?: { [key: string]: any };
 }
 export default function SearchBar({
   search,
   setSearch,
   placeholder,
+  sx = {},
 }: SearchBarProps) {
   useDeviceContext(tw);
 
   return (
     <View
-      sx={tw`shadow-md justify-between w-full max-w-140 self-center
-      border-stone-100 dark:border-neutral-800 dark:border-neutral border
-      bg-stone-200 flex-row items-center dark:bg-neutral-900 pl-5 pr-4 py-2.5
-      android:py-2 rounded-full`}
+      sx={tw.style(
+        `shadow-md justify-between w-full max-w-140 self-center border-stone-100
+        dark:border-neutral-700 border bg-stone-200 flex-row items-center
+        dark:bg-neutral-800 pl-5 pr-4 py-2.5 android:py-2 rounded-full`,
+        sx,
+      )}
     >
       <TextInput
         value={search}
         onChangeText={setSearch}
         placeholderTextColor={
-          tw`text-stone-400 dark:text-neutral-700`.color as string
+          tw`text-stone-400 dark:text-neutral-600`.color as string
         }
         placeholder={placeholder}
         textAlignVertical="center"
@@ -39,7 +43,7 @@ export default function SearchBar({
       <Feather
         name="search"
         size={24}
-        color={tw`text-stone-400 dark:text-neutral-700`.color as string}
+        color={tw`text-stone-400 dark:text-neutral-600`.color as string}
       />
     </View>
   );
