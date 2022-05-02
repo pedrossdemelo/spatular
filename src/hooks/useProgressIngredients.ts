@@ -16,12 +16,15 @@ export default function useProgressIngredients(recipe: ParsedRecipe) {
   /**
    * Adds an ingredient to the recipe's progress list
    */
-  const addIngredient = (ingredient: Ingredient) => {
+  const addIngredient = ({ name, measure }: Ingredient) => {
     const newState = {
       ...inProgressRecipes,
       [key(type)]: {
         ...inProgressRecipes[key(type)],
-        [id]: [...(inProgressRecipes[key(type)][id] || []), ingredient.name],
+        [id]: [
+          ...(inProgressRecipes[key(type)][id] || []),
+          `${name} - ${measure}`,
+        ],
       },
     };
 
@@ -31,13 +34,14 @@ export default function useProgressIngredients(recipe: ParsedRecipe) {
   /**
    * Removes an ingredient from the recipe's progress list
    */
-  const removeIngredient = (ingredient: Ingredient) => {
+  const removeIngredient = ({ name, measure }: Ingredient) => {
     const newState = {
       ...inProgressRecipes,
       [key(type)]: {
         ...inProgressRecipes[key(type)],
         [id]: inProgressRecipes[key(type)][id].filter(
-          (ingredientName: string) => ingredientName !== ingredient.name,
+          (ingredientMeasure: string) =>
+            ingredientMeasure !== `${name} - ${measure}`,
         ),
       },
     };

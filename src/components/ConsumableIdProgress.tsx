@@ -63,7 +63,7 @@ export default function ConsumableIdProgress(props: ConsumableIdProgressProps) {
   ] = useProgressIngredients(data);
 
   const isChecked = (ingredient: Extract<typeof ingredients>) =>
-    ingredientsDone.includes(ingredient.name);
+    ingredientsDone.includes(`${ingredient.name} - ${ingredient.measure}`);
   const toggleChecked = (ingredient: Extract<typeof ingredients>) => () =>
     isChecked(ingredient)
       ? removeIngredient(ingredient)
