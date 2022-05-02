@@ -11,6 +11,14 @@ import debounce from "utils/debounce";
 import { Heading, ImageDescriptionGradient, SButton } from "./atoms";
 import SearchBar from "./SearchBar";
 
+function ingredientQuery(query: string) {
+  if (!query.toLocaleLowerCase().startsWith("with:")) return null;
+
+  const [, ingredient] = query.split(":");
+
+  return ingredient.trim().toLocaleLowerCase();
+}
+
 interface ConsumableCardProps {
   data: ParsedRecipe;
 }
@@ -71,16 +79,17 @@ function CategoryChip(props: CategoryChipProps) {
 
 interface ConsumablesProps {
   type: "food" | "drink";
+  query?: string;
 }
 
 export default function Consumables(props: ConsumablesProps) {
-  const { type } = props;
+  const { type, query: paramsQuery } = props;
 
   const Api = type === "food" ? foodApi : drinkApi;
 
-  const [search, setSearch] = useState("");
+  const [inputSearch, setInputSearch] = useState(paramsQuery ?? "");
 
-  const [requestQuery, setRequestQuery] = useState(search);
+  const [requestQuery, setRequestQuery] = useState(inputSearch);
 
   const debounceRequest = useCallback(
     debounce((value) => setRequestQuery(value), 500),
@@ -91,12 +100,22 @@ export default function Consumables(props: ConsumablesProps) {
 
   useEffect(() => {
     setSelectedCategory(null);
-    debounceRequest(search);
-  }, [search]);
+    debounceRequest(inputSearch);
+  }, [inputSearch]);
 
-  const URL = selectedCategory
-    ? Api.getByCategory(selectedCategory)
-    : Api.getBySearch(requestQuery);
+  useEffect(() => {
+    if (!paramsQuery) return;
+    setInputSearch(paramsQuery);
+    setRequestQuery(paramsQuery);
+  }, [paramsQuery]);
+
+  const URL = (() => {
+    if (selectedCategory) return Api.getByCategory(selectedCategory);
+    if (ingredientQuery(requestQuery))
+      return Api.getByIngredient(ingredientQuery(requestQuery)!);
+
+    return Api.getBySearch(requestQuery);
+  })();
 
   const [consumables, loading] = useDataDbApi(URL);
 
@@ -138,8 +157,8 @@ export default function Consumables(props: ConsumablesProps) {
         <SearchBar
           sx={tw`shadow-lg`}
           placeholder={`Search for a ${type === "food" ? "meal" : "drink"}...`}
-          setSearch={setSearch}
-          search={search}
+          setSearch={setInputSearch}
+          search={inputSearch}
         />
       </View>
 
