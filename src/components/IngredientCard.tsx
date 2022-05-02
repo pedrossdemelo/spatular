@@ -52,6 +52,7 @@ export default function IngredientCard(props: IngredientCardProps) {
       </View>
 
       <Text
+        numberOfLines={1}
         sx={tw`font-dmsans text-stone-800 dark:text-neutral-300 font-medium mx-4 text-lg grow`}
       >
         {name}

@@ -25,12 +25,18 @@ export default function ImageDescriptionGradient(
       source={source}
     >
       <View sx={tw`absolute bottom-4 right-5`}>
-        <Text sx={tw`text-2xl font-dmsans font-medium text-white text-right`}>
+        <Text
+          numberOfLines={1}
+          sx={tw`text-2xl font-dmsans font-medium text-white text-right`}
+        >
           {title}
         </Text>
 
         {!!subtitle && (
-          <Text sx={tw`font-lato text-sm text-white text-right`}>
+          <Text
+            numberOfLines={1}
+            sx={tw`font-lato text-sm text-white text-right`}
+          >
             {subtitle}
           </Text>
         )}
