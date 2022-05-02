@@ -1,4 +1,4 @@
-import { MaterialIcons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import { Image, Text, TextInput, View } from "dripsy";
 import { useDataDbApi } from "hooks";
 import React, { useMemo, useState } from "react";
@@ -12,6 +12,7 @@ import { drinkApi, foodApi } from "services";
 import tw from "styles";
 import { useDeviceContext } from "twrnc";
 import { convertToAlphabeticalSections, parseIngredients } from "utils";
+import { STouchable } from "./atoms";
 
 interface ExploreByIngredientProps {
   type: "drink" | "food";
@@ -65,27 +66,28 @@ export default function ExploreByIngredient(props: ExploreByIngredientProps) {
   return (
     <>
       <Animated.View
-        style={[
-          tw`absolute shadow-md justify-between top-0 border-stone-100 dark:border-neutral-800 dark:border-neutral border right-0 left-0 m-4 z-99 bg-stone-200 flex-row items-center dark:bg-neutral-900 pl-5 pr-4 py-2.5 android:py-2 rounded-full`,
-          translateStyle,
-        ]}
+        style={[tw`absolute top-0 right-0 left-0 p-4 z-99`, translateStyle]}
       >
-        <TextInput
-          value={search}
-          onChangeText={setSearch}
-          placeholderTextColor={
-            tw`text-stone-400 dark:text-neutral-700`.color as string
-          }
-          placeholder="Search for an ingredient..."
-          textAlignVertical="center"
-          sx={tw`text-[17px] grow font-dmsans text-stone-800 dark:text-neutral-300  py-2.5 android:py-2 -my-2.5 android:-my-2 z-99`}
-        />
+        <View
+          sx={tw`shadow-md justify-between w-full max-w-140 self-center border-stone-100 dark:border-neutral-800 dark:border-neutral border bg-stone-200 flex-row items-center dark:bg-neutral-900 pl-5 pr-4 py-2.5 android:py-2 rounded-full`}
+        >
+          <TextInput
+            value={search}
+            onChangeText={setSearch}
+            placeholderTextColor={
+              tw`text-stone-400 dark:text-neutral-700`.color as string
+            }
+            placeholder="Search for an ingredient..."
+            textAlignVertical="center"
+            sx={tw`text-[17px] grow font-dmsans text-stone-800 rounded-full dark:text-neutral-300 pl-4 -ml-4 py-2.5 android:py-2 -my-2.5 android:-my-2 z-99`}
+          />
 
-        <MaterialIcons
-          name="search"
-          size={24}
-          color={tw`text-stone-400 dark:text-neutral-700`.color as string}
-        />
+          <Feather
+            name="search"
+            size={24}
+            color={tw`text-stone-400 dark:text-neutral-700`.color as string}
+          />
+        </View>
       </Animated.View>
 
       <SectionList
@@ -93,6 +95,7 @@ export default function ExploreByIngredient(props: ExploreByIngredientProps) {
         renderItem={({ item }) => <IngredientCard data={item} />}
         contentContainerStyle={tw`pt-16 px-4`}
         keyExtractor={(item) => item.name}
+        scrollEventThrottle={30}
         onScroll={({ nativeEvent }) => {
           const { y } = nativeEvent.contentOffset;
 
@@ -113,7 +116,9 @@ export default function ExploreByIngredient(props: ExploreByIngredientProps) {
           const { title } = section;
 
           return (
-            <View sx={tw`flex-row items-center mx-3 mt-3 mb-2`}>
+            <View
+              sx={tw`flex-row self-center w-full max-w-134 items-center px-3 mt-3 mb-2`}
+            >
               <Text
                 sx={tw`text-4xl font-dmsans mr-4 text-stone-600 dark:text-neutral-400 font-bold`}
               >
@@ -144,9 +149,13 @@ function IngredientCard({ data }: IngredientCardProps) {
   useDeviceContext(tw);
 
   return (
-    <View
-      sx={tw`flex-row rounded-lg items-center overflow-visible p-3 mb-4 bg-white dark:bg-neutral-900`}
-      key={name}
+    <STouchable
+      onPress={() => {}}
+      sx={tw`flex-row items-center overflow-visible p-3`}
+      outerSx={tw`rounded-lg self-center w-full max-w-140 mb-4 bg-white dark:bg-neutral-900`}
+      pressColor={
+        tw`text-stone-800/20 dark:text-neutral-100/20`.color as string
+      }
     >
       <View
         sx={tw`overflow-visible rounded-full bg-stone-100 dark:bg-neutral-800`}
@@ -165,6 +174,6 @@ function IngredientCard({ data }: IngredientCardProps) {
       >
         {name}
       </Text>
-    </View>
+    </STouchable>
   );
 }
