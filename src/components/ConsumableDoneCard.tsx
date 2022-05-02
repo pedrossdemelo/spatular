@@ -85,7 +85,7 @@ function ConsumableDoneCard(props: ConsumableDoneCardProps) {
       <View sx={tw`absolute bottom-4 right-5`}>
         <Text
           numberOfLines={1}
-          sx={tw`text-2xl font-dmsans font-medium text-white text-right`}
+          sx={tw`text-2xl font-dmsans font-medium text-white text-right ml-7`}
         >
           {name}
         </Text>
@@ -93,7 +93,7 @@ function ConsumableDoneCard(props: ConsumableDoneCardProps) {
         {!!category && (
           <Text
             numberOfLines={1}
-            sx={tw`font-lato text-sm text-white text-right`}
+            sx={tw`font-lato text-sm text-white text-right ml-7`}
           >
             {[nationality || alcoholic, category].filter((a) => a).join(" - ")}
 
