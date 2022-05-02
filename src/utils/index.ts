@@ -1,4 +1,5 @@
 export { default as convertToAlphabeticalSections } from "./convertToAlphabeticalSections";
+export { default as debounce } from "./debounce";
 export { default as getButtonStyles } from "./getButtonStyles";
 export { default as parseFavoriteRecipe } from "./parseFavoriteRecipe";
 export type { BaseRecipe, FavoriteRecipe } from "./parseFavoriteRecipe";
