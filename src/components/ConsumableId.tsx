@@ -144,11 +144,8 @@ export default function ConsumableId(props: ConsumableIdProps) {
             </Text>
 
             {ingredients.map(({ name: ingredient, measure }) => (
-              <View sx={tw`flex-row`}>
-                <Text
-                  sx={tw`text-stone-600 dark:text-neutral-400 mb-1.5`}
-                  key={`${ingredient} ${measure}`}
-                >
+              <View key={`${ingredient} - ${measure}`} sx={tw`flex-row`}>
+                <Text sx={tw`text-stone-600 dark:text-neutral-400 mb-1.5`}>
                   {ingredient}
                 </Text>
 
@@ -204,6 +201,7 @@ export default function ConsumableId(props: ConsumableIdProps) {
             {recommendations.map((r) => (
               <ImageDescriptionGradient
                 title={r.name}
+                key={r.name}
                 source={r.image}
                 subtitle={r.category}
                 sx={tw`w-50 mr-4 aspect-6/5 shadow-md`}
