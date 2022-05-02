@@ -5,3 +5,4 @@ export { default as Consumables } from "./Consumables";
 export { default as ExploreByIngredient } from "./ExploreByIngredient";
 export { default as ExploreByNationality } from "./ExploreByNationality";
 export { default as IngredientCard } from "./IngredientCard";
+export { default as SearchBar } from "./SearchBar";
