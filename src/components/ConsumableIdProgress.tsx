@@ -137,7 +137,7 @@ export default function ConsumableIdProgress(props: ConsumableIdProgressProps) {
                 const isFirst = index === 0;
 
                 return (
-                  <React.Fragment key={`${ingredient} - ${measure}`}>
+                  <React.Fragment key={`${ingredientName} - ${measure}`}>
                     {isFirst && (
                       <View sx={tw`h-1 bg-stone-100 dark:bg-[#101010]`} />
                     )}
