@@ -11,7 +11,7 @@ function Profile() {
   useDeviceContext(tw);
 
   const { user, logout } = useAuth();
-  const { email = "Guest" } = user ?? {};
+  const { email } = user ?? {};
 
   const navigation = useNavigation<any>();
 
@@ -36,7 +36,10 @@ function Profile() {
 
   return (
     <ScrollView contentContainerSx={tw`grow pt-[${top}px]`}>
-      <Heading title="Profile" subtitle={email} />
+      <Heading
+        title="Profile"
+        subtitle={email && email?.length > 7 ? email : "Guest"}
+      />
 
       <View sx={tw`m-4 grow`}>
         <SButton
