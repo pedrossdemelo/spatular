@@ -20,7 +20,7 @@ type Keys = Exclude<
 >;
 
 interface SButtonProps<T extends Keys> {
-  children?: string;
+  children?: string | React.ReactNode[];
   testID?: string;
   onPress: () => void;
   textSx?: { [key: string]: any };
@@ -117,7 +117,11 @@ function SButton<T extends Keys = "MaterialCommunityIcons">(
           <Icon color={textStyle.color as string} name={startIcon} size={24} />
         )}
 
-        {children && <Text sx={textStyle}>{children}</Text>}
+        {typeof children === "string" ? (
+          <Text sx={textStyle}>{children}</Text>
+        ) : (
+          children
+        )}
 
         {!!endIcon && (
           <Icon color={textStyle.color as string} name={endIcon} size={24} />
