@@ -7,6 +7,9 @@ import tw from "styles";
 import { useDeviceContext } from "twrnc";
 import { parseRecipe } from "utils";
 
+const foodIngredients = require("../../../assets/foodIngredients.jpeg");
+const foodNationalities = require("../../../assets/foodNationalities.jpeg");
+
 export default function ExploreFoods() {
   useDeviceContext(tw);
 
@@ -39,7 +42,7 @@ export default function ExploreFoods() {
       <ScrollView contentContainerSx={tw`grow`}>
         <View sx={tw`m-4`}>
           <ImageDescriptionGradient
-            source="https://conagen.com/wp-content/uploads/2019/08/Food-Ingredients.jpg"
+            source={foodIngredients}
             onPress={goToExploreFoodsByIngredient}
             title="Explore by ingredient"
             subtitle="Find recipes with the ingredients you want"
@@ -47,7 +50,7 @@ export default function ExploreFoods() {
           />
 
           <ImageDescriptionGradient
-            source="https://wordpress.soscuisine.com/2015/10/wordl-cuisine.jpg"
+            source={foodNationalities}
             onPress={goToExploreFoodsByNationality}
             title="Explore by nationality"
             subtitle="See what the world has to offer"

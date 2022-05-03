@@ -7,6 +7,8 @@ import Api from "services/Api";
 import tw from "styles";
 import { parseRecipe } from "utils";
 
+const drinkIngredients = require("../../../assets/drinkIngredients.jpeg");
+
 export default function ExploreDrinks() {
   const { navigate } = useNavigation<any>();
 
@@ -33,7 +35,7 @@ export default function ExploreDrinks() {
       <ScrollView contentContainerSx={tw`grow`}>
         <View sx={tw`m-4`}>
           <ImageDescriptionGradient
-            source="https://media.timeout.com/images/105631937/1372/772/image.jpg"
+            source={drinkIngredients}
             onPress={goToExploreDrinksByIngredient}
             title="Explore by ingredient"
             subtitle="Find recipes with the ingredients you want"
