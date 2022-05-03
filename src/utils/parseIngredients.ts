@@ -17,7 +17,9 @@ export default function parseIngredients(
   return {
     name: strIngredient || strIngredient1,
     image: strIngredient1
-      ? `https://www.thecocktaildb.com/images/ingredients/${strIngredient1}.png`
-      : `https://www.themealdb.com/images/ingredients/${strIngredient}.png`,
+      ? `https://www.thecocktaildb.com/images/ingredients/${strIngredient1}-Small.png`
+      : `https://www.themealdb.com/images/ingredients/${strIngredient}-Small.png`,
   };
 }
+
+export type Ingredient = ReturnType<typeof parseIngredients>;

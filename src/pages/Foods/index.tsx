@@ -1,4 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useSx } from "dripsy";
+import { getStackNavigatorTheme } from "navigation/navigationThemes";
+import tw from "styles";
+import { useDeviceContext } from "twrnc";
 import FoodId from "./FoodId";
 import FoodIdProgress from "./FoodIdProgress";
 import Foods from "./Foods";
@@ -12,13 +16,38 @@ type FoodsStackParamsList = {
 const Stack = createNativeStackNavigator<FoodsStackParamsList>();
 
 function FoodsStack() {
+  useDeviceContext(tw);
+
+  const sx = useSx();
+
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Foods" component={Foods} />
+    <Stack.Navigator
+      screenOptions={getStackNavigatorTheme(sx, tw)}
+      initialRouteName="Foods"
+    >
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Foods"
+        component={Foods}
+      />
 
-      <Stack.Screen name="FoodId" component={FoodId} />
+      <Stack.Screen
+        options={({ route }) => ({
+          // @ts-expect-error
+          title: route.params?.title ?? "Meal",
+        })}
+        name="FoodId"
+        component={FoodId}
+      />
 
-      <Stack.Screen name="FoodIdProgress" component={FoodIdProgress} />
+      <Stack.Screen
+        options={({ route }) => ({
+          // @ts-expect-error
+          title: `${route.params?.title ?? "Meal"} progress`,
+        })}
+        name="FoodIdProgress"
+        component={FoodIdProgress}
+      />
     </Stack.Navigator>
   );
 }

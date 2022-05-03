@@ -1,4 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useSx } from "dripsy";
+import { getStackNavigatorTheme } from "navigation/navigationThemes";
+import tw from "styles";
+import { useDeviceContext } from "twrnc";
 import DrinkId from "./DrinkId";
 import DrinkIdProgress from "./DrinkIdProgress";
 import Drinks from "./Drinks";
@@ -12,13 +16,38 @@ type DrinksStackParamsList = {
 const Stack = createNativeStackNavigator<DrinksStackParamsList>();
 
 function DrinksStack() {
+  useDeviceContext(tw);
+
+  const sx = useSx();
+
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Drinks" component={Drinks} />
+    <Stack.Navigator
+      screenOptions={getStackNavigatorTheme(sx, tw)}
+      initialRouteName="Drinks"
+    >
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Drinks"
+        component={Drinks}
+      />
 
-      <Stack.Screen name="DrinkId" component={DrinkId} />
+      <Stack.Screen
+        options={({ route }) => ({
+          // @ts-expect-error
+          title: route.params?.title ?? "Drink",
+        })}
+        name="DrinkId"
+        component={DrinkId}
+      />
 
-      <Stack.Screen name="DrinkIdProgress" component={DrinkIdProgress} />
+      <Stack.Screen
+        options={({ route }) => ({
+          // @ts-expect-error
+          title: `${route.params?.title ?? "Drink"} progress`,
+        })}
+        name="DrinkIdProgress"
+        component={DrinkIdProgress}
+      />
     </Stack.Navigator>
   );
 }

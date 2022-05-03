@@ -1,29 +1,39 @@
 import * as DMSans from "@expo-google-fonts/dm-sans";
-import * as Overpass from "@expo-google-fonts/overpass";
+import * as Lato from "@expo-google-fonts/lato";
 import { useFonts } from "expo-font";
-import { useEffect } from "react";
+import * as Navigation from "expo-navigation-bar";
+import { useEffect, useState } from "react";
 import { Platform } from "react-native";
 
 export default function useAppSettings() {
+  const [isLoading, setLoading] = useState(true);
+
   const [loadedFonts] = useFonts({
-    "Overpass-Light": Overpass.Overpass_300Light,
-    "Overpass-Regular": Overpass.Overpass_400Regular,
-    "Overpass-Medium": Overpass.Overpass_500Medium,
-    "Overpass-Semibold": Overpass.Overpass_600SemiBold,
-    "Overpass-Bold": Overpass.Overpass_700Bold,
-    "DMSans-Regular": DMSans.DMSans_400Regular,
-    "DMSans-Medium": DMSans.DMSans_500Medium,
-    "DMSans-Bold": DMSans.DMSans_700Bold,
+    "lato-light": Lato.Lato_300Light,
+    lato: Lato.Lato_400Regular,
+    "lato-bold": Lato.Lato_700Bold,
+    "lato-black": Lato.Lato_900Black,
+    dmsans: DMSans.DMSans_400Regular,
+    "dmsans-medium": DMSans.DMSans_500Medium,
+    "dmsans-bold": DMSans.DMSans_700Bold,
   });
 
   useEffect(() => {
-    if (Platform.OS === "web" && document) {
-      const root = document.getElementById("root");
-      root && (root.style.overflow = "hidden");
-    }
+    (async () => {
+      setLoading(true);
+      if (Platform.OS === "web") {
+        const root = document.getElementById("root");
+        root && (root.style.overflow = "hidden");
+      }
+      if (Platform.OS === "android") {
+        await Navigation.setPositionAsync("absolute");
+        await Navigation.setBackgroundColorAsync("#ffffff01");
+      }
+      setLoading(false);
+    })();
   }, []);
 
-  const loading = !loadedFonts;
+  const loading = !loadedFonts || isLoading;
 
   return [loading];
 }

@@ -1,47 +1,45 @@
 import { useNavigation } from "@react-navigation/native";
 import { DoneRecipe } from "context";
+import { Text, View } from "dripsy";
 import * as Clipboard from "expo-clipboard";
 import * as Linking from "expo-linking";
 import { useRecipeList } from "hooks";
-import React, { useState } from "react";
-import { Button, Image, Pressable, Text, View } from "react-native";
+import React from "react";
 import tw from "styles";
+import { useDeviceContext } from "twrnc";
+import { showToast } from "utils";
+import { BaseRecipe } from "utils/parseFavoriteRecipe";
+import { ImageTouchableGradient, SButton } from "./atoms";
 
 const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
 
+type BaseOrDoneRecipe = Partial<DoneRecipe> & BaseRecipe;
+
 interface ConsumableDoneCardProps {
-  data: DoneRecipe;
+  data: BaseOrDoneRecipe;
+  sx: { [key: string]: any };
 }
 
 function ConsumableDoneCard(props: ConsumableDoneCardProps) {
-  const { data } = props;
-  const {
-    id,
-    image,
-    name,
-    type,
-    tags,
-    nationality,
-    alcoholic,
-    category,
-    doneDate,
-  } = data;
+  const { data, sx = {} } = props;
+  const { id, image, name, type, nationality, alcoholic, category, doneDate } =
+    data;
+
+  useDeviceContext(tw);
 
   const navigation = useNavigation<any>();
 
   const goToRecipePage = () => {
-    // BUG: React Navigation does not redirect to a different stack when the user enters a page through an URL
     navigation.navigate(`${capitalize(type)}sStack`, {
       screen: `${capitalize(type)}Id`,
-      params: { id },
+      params: { id, title: name },
     });
   };
 
-  const [shareText, setShareText] = useState("Share");
   const copyUrl = () => {
     const routeName = Linking.createURL(`/${type}s/${id}`);
     Clipboard.setString(routeName);
-    setShareText("Link copied!");
+    showToast("Copied to clipboard!", tw);
   };
 
   const [favoriteRecipes, addFavorite, removeFavorite] =
@@ -52,41 +50,60 @@ function ConsumableDoneCard(props: ConsumableDoneCardProps) {
     isFavorite ? removeFavorite(data) : addFavorite(data);
 
   return (
-    <View testID={`${name}-done-card`}>
-      <Pressable
-        testID={`${name}-anchor`}
-        android_ripple={{ color: "black" }}
-        onPress={goToRecipePage}
-      >
-        <Image source={{ uri: image }} style={tw`w-[80%] aspect-square`} />
+    <ImageTouchableGradient
+      testID={`${name}-done-card`}
+      onPress={goToRecipePage}
+      colors={[tw.color("black/50")!, "transparent", tw.color("black/50")!]}
+      source={image}
+      sx={sx}
+    >
+      <View sx={tw`absolute top-2 right-4 z-99 flex-row items-center`}>
+        <SButton
+          startIcon="share-variant"
+          testID={`${name}-share-button`}
+          variant="text"
+          textSx={tw`text-white dark:text-white`}
+          pressColor={tw.color("white/30")!}
+          outerSx={tw`rounded-full ml-2`}
+          onPress={copyUrl}
+        />
 
-        <Text>{name}</Text>
-      </Pressable>
+        <SButton
+          testID={
+            isFavorite
+              ? `${name}-remove-favorite-button`
+              : `${name}-favorite-button`
+          }
+          onPress={toggleFavorite}
+          textSx={tw`text-white dark:text-white`}
+          pressColor={tw.color("white/30")!}
+          variant="text"
+          color="secondary"
+          outerSx={tw`rounded-full -mr-2`}
+          endIcon={isFavorite ? "heart" : "heart-outline"}
+        />
+      </View>
 
-      <Text>
-        {[nationality || alcoholic, category].filter((a) => a).join(" - ")}
-      </Text>
+      <View sx={tw`absolute bottom-4 right-5`}>
+        <Text
+          numberOfLines={1}
+          sx={tw`text-2xl font-dmsans font-medium text-white text-right ml-7`}
+        >
+          {name}
+        </Text>
 
-      {!!doneDate && <Text>{new Date(doneDate).toLocaleDateString()}</Text>}
+        {!!category && (
+          <Text
+            numberOfLines={1}
+            sx={tw`font-lato text-sm text-white text-right ml-7`}
+          >
+            {[nationality || alcoholic, category].filter((a) => a).join(" - ")}
 
-      {tags && tags.map((tag) => <Text key={tag}>{tag}</Text>)}
-
-      <Button
-        testID={`${name}-share-button`}
-        onPress={copyUrl}
-        title={shareText}
-      />
-
-      <Button
-        testID={
-          isFavorite
-            ? `${name}-remove-favorite-button`
-            : `${name}-favorite-button`
-        }
-        title={isFavorite ? "Remove from favorites" : "Add to favorites"}
-        onPress={toggleFavorite}
-      />
-    </View>
+            {doneDate ? ` (${new Date(doneDate).toLocaleDateString()})` : ""}
+          </Text>
+        )}
+      </View>
+    </ImageTouchableGradient>
   );
 }
 

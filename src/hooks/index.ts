@@ -1,5 +1,6 @@
 export { default as useAppSettings } from "./useAppSettings";
 export { default as useAuth } from "./useAuth";
+export { default as useBarStyles } from "./useBarStyles";
 export { default as useDataDbApi } from "./useDataDbApi";
 export { default as useFetch } from "./useFetch";
 export { default as useLocalStorage } from "./useLocalStorage";

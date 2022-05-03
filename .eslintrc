@@ -39,7 +39,8 @@
     "@typescript-eslint/no-unused-expressions": ["off"],
     "no-param-reassign": ["off"],
     "prettier/prettier": ["warn"],
-    "react/require-default-props": ["off"]
+    "react/require-default-props": ["off"],
+    "no-plusplus": ["off"]
   },
 
   "settings": {
