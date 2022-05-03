@@ -19,11 +19,12 @@ function Profile() {
   const [, , , setFavorites] = useRecipeList("favoriteRecipes");
   const [, , , setInProgressRecipes] = useRecipeList("inProgressRecipes");
 
-  const goLogout = () => {
+  const goLogout = async () => {
     setDoneRecipes([]);
     setFavorites([]);
     setInProgressRecipes({ meals: {}, cocktails: {} });
-    logout();
+    await logout();
+    navigation.replace("Login");
   };
 
   const goToDoneRecipes = () => navigation.navigate("DoneRecipes");

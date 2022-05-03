@@ -25,9 +25,9 @@ export function AuthContextProvider({ children }: Props) {
     setUser(newUser);
   };
 
-  const logout = () => {
+  const logout = async () => {
     setUser(null);
-    AsyncStorage.clear();
+    await AsyncStorage.clear();
   };
 
   const value = useMemo(() => [user, login, logout, setUser] as const, [user]);
