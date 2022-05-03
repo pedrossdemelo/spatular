@@ -13,7 +13,7 @@ export default function DrinkIdProgress({ route }: any) {
   if (loading)
     return (
       <ActivityIndicator
-        size="large"
+        size={tw.prefixMatch("ios") ? "small" : "large"}
         color={tw.color("orange-600")}
         style={tw`mt-4`}
       />

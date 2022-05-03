@@ -165,7 +165,7 @@ export default function Consumables(props: ConsumablesProps) {
       <View sx={tw`mx-4 my-2 grow`}>
         {loading && (
           <ActivityIndicator
-            size="large"
+            size={tw.prefixMatch("ios") ? "small" : "large"}
             sx={tw`my-4`}
             color={tw.color("orange-600")}
           />

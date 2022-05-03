@@ -71,7 +71,7 @@ export default function ExploreByNationality(props: ExploreByNationalityProps) {
 
       {loading ? (
         <ActivityIndicator
-          size="large"
+          size={tw.prefixMatch("ios") ? "small" : "large"}
           color={tw.color("orange-600")!}
           style={tw`mt-4`}
         />
