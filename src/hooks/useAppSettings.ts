@@ -28,7 +28,6 @@ export default function useAppSettings() {
       if (Platform.OS === "android") {
         await Navigation.setPositionAsync("absolute");
         await Navigation.setBackgroundColorAsync("#ffffff01");
-        await Navigation.setButtonStyleAsync("light");
       }
       setLoading(false);
     })();
