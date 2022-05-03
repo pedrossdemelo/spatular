@@ -49,7 +49,7 @@ function Login() {
   return (
     <View style={tw`grow`}>
       <View
-        sx={tw`absolute top-0 right-0 left-0 bottom-0 justify-center items-center`}
+        sx={tw`absolute top-0 right-0 left-0 bottom-0 justify-center items-center bg-neutral-800`}
       >
         <LinearGradient
           colors={["transparent", "transparent", tw.color("black")!]}
