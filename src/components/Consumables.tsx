@@ -85,6 +85,8 @@ interface ConsumablesProps {
 export default function Consumables(props: ConsumablesProps) {
   const { type, query: paramsQuery } = props;
 
+  const navigation = useNavigation<any>();
+
   const Api = type === "food" ? foodApi : drinkApi;
 
   const [inputSearch, setInputSearch] = useState(paramsQuery ?? "");
@@ -102,6 +104,13 @@ export default function Consumables(props: ConsumablesProps) {
     setSelectedCategory(null);
     debounceRequest(inputSearch);
   }, [inputSearch]);
+
+  useEffect(() => {
+    requestQuery &&
+      navigation.setParams({
+        query: requestQuery,
+      });
+  }, [requestQuery]);
 
   useEffect(() => {
     if (!paramsQuery) return;
