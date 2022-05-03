@@ -36,9 +36,7 @@ function RootStack() {
         >
           {!user && <Root.Screen name="Login" component={Login} />}
 
-          {user && (
-            <Root.Screen name="MainTabsStack" component={MainTabsStack} />
-          )}
+          <Root.Screen name="MainTabsStack" component={MainTabsStack} />
         </Root.Navigator>
       </NavigationContainer>
     </>
