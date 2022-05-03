@@ -1,5 +1,6 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import useBarStyle from "hooks/useBarStyles";
 import DrinksStack from "pages/Drinks";
 import ExploreStack from "pages/Explore";
 import FoodsStack from "pages/Foods";
@@ -19,6 +20,8 @@ const MainTabs = createBottomTabNavigator<MainTabsParamsList>();
 
 function MainTabsStack() {
   useDeviceContext(tw);
+
+  useBarStyle("auto");
 
   return (
     <MainTabs.Navigator

@@ -5,7 +5,7 @@ import { SButton } from "components/atoms";
 import { styled, Text, TextInput, View } from "dripsy";
 import { Video } from "expo-av";
 import { LinearGradient } from "expo-linear-gradient";
-import { useAuth } from "hooks";
+import { useAuth, useBarStyles } from "hooks";
 import { ComponentProps, useEffect, useState } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import {
@@ -22,6 +22,8 @@ function Login() {
   const navigation = useNavigation<any>();
 
   const [email, setEmail] = useState("");
+
+  useBarStyles("light");
 
   const [password, setPassword] = useState("");
 
@@ -116,7 +118,6 @@ function Login() {
             textSx={tw`uppercase text-white`}
             variant="outlined"
             onPress={handleLogin}
-            disabled={disabled}
             pressColor={tw`text-white/10`.color as string}
             outerSx={tw`border-white`}
           >
