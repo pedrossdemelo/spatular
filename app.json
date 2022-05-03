@@ -1,5 +1,6 @@
 {
   "expo": {
+    "jsEngine": "hermes",
     "name": "spatular",
     "slug": "spatular",
     "scheme": "spatular",
