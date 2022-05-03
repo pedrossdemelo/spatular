@@ -1,5 +1,9 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useSx } from "dripsy";
+import { getStackNavigatorTheme } from "navigation/navigationThemes";
 import React from "react";
+import tw from "styles";
+import { useDeviceContext } from "twrnc";
 import Explore from "./Explore";
 import ExploreDrinks from "./ExploreDrinks";
 import ExploreDrinksByIngredient from "./ExploreDrinksByIngredient";
@@ -19,25 +23,47 @@ type ExploreStackParamsList = {
 const Stack = createNativeStackNavigator<ExploreStackParamsList>();
 
 function ExploreStack() {
+  useDeviceContext(tw);
+
+  const sx = useSx();
+
   return (
-    <Stack.Navigator initialRouteName="Explore">
-      <Stack.Screen name="Explore" component={Explore} />
-
-      <Stack.Screen name="ExploreDrinks" component={ExploreDrinks} />
-
-      <Stack.Screen name="ExploreFoods" component={ExploreFoods} />
+    <Stack.Navigator
+      screenOptions={getStackNavigatorTheme(sx, tw)}
+      initialRouteName="Explore"
+    >
+      <Stack.Screen
+        name="Explore"
+        options={{ headerShown: false }}
+        component={Explore}
+      />
 
       <Stack.Screen
+        options={{ title: "Drinks" }}
+        name="ExploreDrinks"
+        component={ExploreDrinks}
+      />
+
+      <Stack.Screen
+        options={{ title: "Meals" }}
+        name="ExploreFoods"
+        component={ExploreFoods}
+      />
+
+      <Stack.Screen
+        options={{ title: "Drinks by ingredient" }}
         name="ExploreDrinksByIngredient"
         component={ExploreDrinksByIngredient}
       />
 
       <Stack.Screen
+        options={{ title: "Meals by ingredient" }}
         name="ExploreFoodsByIngredient"
         component={ExploreFoodsByIngredient}
       />
 
       <Stack.Screen
+        options={{ title: "Meals by nationality" }}
         name="ExploreFoodsByNationality"
         component={ExploreFoodsByNationality}
       />

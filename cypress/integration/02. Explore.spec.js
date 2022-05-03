@@ -4,7 +4,7 @@ describe("Explore page", () => {
   });
 
   it("should display buttons to explore foods and drinks", () => {
-    cy.contains('[role="button"]', /food/i).should("exist");
+    cy.contains('[role="button"]', /food|meal/i).should("exist");
     cy.contains('[role="button"]', /drink/i).should("exist");
   });
 
@@ -15,7 +15,7 @@ describe("Explore page", () => {
   });
 
   it("should be able to redirect to the foods page", () => {
-    cy.contains('[role="button"]', /food/i).click({ force: true });
+    cy.contains('[role="button"]', /food|meal/i).click({ force: true });
     cy.location("pathname").should("eq", "/explore/foods");
     cy.go("back");
   });
