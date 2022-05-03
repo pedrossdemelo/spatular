@@ -7,6 +7,7 @@ import { useRecipeList } from "hooks";
 import React from "react";
 import tw from "styles";
 import { useDeviceContext } from "twrnc";
+import { showToast } from "utils";
 import { BaseRecipe } from "utils/parseFavoriteRecipe";
 import { ImageTouchableGradient, SButton } from "./atoms";
 
@@ -24,6 +25,8 @@ function ConsumableDoneCard(props: ConsumableDoneCardProps) {
   const { id, image, name, type, nationality, alcoholic, category, doneDate } =
     data;
 
+  useDeviceContext(tw);
+
   const navigation = useNavigation<any>();
 
   const goToRecipePage = () => {
@@ -36,6 +39,7 @@ function ConsumableDoneCard(props: ConsumableDoneCardProps) {
   const copyUrl = () => {
     const routeName = Linking.createURL(`/${type}s/${id}`);
     Clipboard.setString(routeName);
+    showToast("Copied to clipboard", tw);
   };
 
   const [favoriteRecipes, addFavorite, removeFavorite] =
@@ -44,8 +48,6 @@ function ConsumableDoneCard(props: ConsumableDoneCardProps) {
 
   const toggleFavorite = () =>
     isFavorite ? removeFavorite(data) : addFavorite(data);
-
-  useDeviceContext(tw);
 
   return (
     <ImageTouchableGradient

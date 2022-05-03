@@ -8,7 +8,7 @@ import YoutubeIframe from "react-native-youtube-iframe";
 import { drinkApi, foodApi } from "services";
 import tw from "styles";
 import { useDeviceContext } from "twrnc";
-import { ParsedRecipe } from "utils";
+import { ParsedRecipe, showToast } from "utils";
 import { ImageDescriptionGradient, SButton } from "./atoms";
 
 function shuffle<T>(array: T[]): T[] {
@@ -49,6 +49,8 @@ export default function ConsumableId(props: ConsumableIdProps) {
     id,
   } = data;
 
+  useDeviceContext(tw);
+
   const navigation = useNavigation<any>();
 
   const [playing, setPlaying] = useState(false);
@@ -76,14 +78,13 @@ export default function ConsumableId(props: ConsumableIdProps) {
   const copyUrl = () => {
     const routeName = Linking.createURL(`/${type}s/${id}`);
     Clipboard.setString(routeName);
+    showToast("Copied to clipboard!", tw);
   };
 
   const handleRecipeProgressButton = () => {
     if (!isInProgress) startRecipe(data);
     navigation.navigate(`${capitalize(type)}IdProgress`, { id, title: name });
   };
-
-  useDeviceContext(tw);
 
   return (
     <>

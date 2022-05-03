@@ -7,7 +7,7 @@ import { AnimatePresence, MotiView } from "moti";
 import React, { ComponentProps } from "react";
 import tw from "styles";
 import { useDeviceContext } from "twrnc";
-import { ParsedRecipe } from "utils";
+import { ParsedRecipe, showToast } from "utils";
 import { SButton } from "./atoms";
 
 type Extract<T> = T extends (infer U)[] ? U : never;
@@ -29,6 +29,8 @@ export default function ConsumableIdProgress(props: ConsumableIdProgressProps) {
     type,
   } = data;
 
+  useDeviceContext(tw);
+
   const navigation = useNavigation<any>();
 
   const [doneRecipes, completeRecipe, restartRecipe] =
@@ -47,6 +49,7 @@ export default function ConsumableIdProgress(props: ConsumableIdProgressProps) {
   const copyUrl = () => {
     const routeName = Linking.createURL(`/${type}s/${id}`);
     Clipboard.setString(routeName);
+    showToast("Copied to clipboard", tw);
   };
 
   const [favoriteRecipes, addFavorite, removeFavorite] =
@@ -68,8 +71,6 @@ export default function ConsumableIdProgress(props: ConsumableIdProgressProps) {
     isChecked(ingredient)
       ? removeIngredient(ingredient)
       : addIngredient(ingredient);
-
-  useDeviceContext(tw);
 
   return (
     <>
