@@ -6,6 +6,7 @@ import ExploreStack from "pages/Explore";
 import FoodsStack from "pages/Foods";
 import ProfileStack from "pages/Profile";
 import { ComponentProps } from "react";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import tw from "styles";
 import { useDeviceContext } from "twrnc";
 
@@ -22,6 +23,8 @@ function MainTabsStack() {
   useDeviceContext(tw);
 
   useBarStyle("auto");
+
+  const { bottom } = useSafeAreaInsets();
 
   return (
     <MainTabs.Navigator
@@ -60,7 +63,10 @@ function MainTabsStack() {
         tabBarInactiveTintColor: tw`text-stone-400 dark:text-neutral-600`.color,
         tabBarLabelStyle: tw`font-dmsans`,
         tabBarAccessibilityLabel: "anchor",
-        tabBarStyle: tw`elevation-0 shadow-none`,
+        tabBarStyle: tw.style(
+          "elevation-0 shadow-none",
+          bottom === 0 && "h-13 pb-1",
+        ),
       })}
     >
       <MainTabs.Screen
