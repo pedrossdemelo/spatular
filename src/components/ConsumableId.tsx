@@ -3,7 +3,7 @@ import { Image, ScrollView, Text, View } from "dripsy";
 import * as Clipboard from "expo-clipboard";
 import * as Linking from "expo-linking";
 import { useDataDbApi, useRecipeList } from "hooks";
-import React, { useMemo, useState } from "react";
+import React, { useLayoutEffect, useMemo, useState } from "react";
 import YoutubeIframe from "react-native-youtube-iframe";
 import { drinkApi, foodApi } from "services";
 import tw from "styles";
@@ -53,6 +53,12 @@ export default function ConsumableId(props: ConsumableIdProps) {
 
   const navigation = useNavigation<any>();
 
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: name,
+    });
+  }, [name]);
+
   const [playing, setPlaying] = useState(false);
   const togglePlay = () => setPlaying(!playing);
 
@@ -83,7 +89,7 @@ export default function ConsumableId(props: ConsumableIdProps) {
 
   const handleRecipeProgressButton = () => {
     if (!isInProgress) startRecipe(data);
-    navigation.navigate(`${capitalize(type)}IdProgress`, { id, title: name });
+    navigation.navigate(`${capitalize(type)}IdProgress`, { id });
   };
 
   return (
@@ -209,7 +215,6 @@ export default function ConsumableId(props: ConsumableIdProps) {
                 onPress={() =>
                   navigation.navigate(`${capitalize(r.type)}Id`, {
                     id: r.id,
-                    title: r.name,
                   })
                 }
               />

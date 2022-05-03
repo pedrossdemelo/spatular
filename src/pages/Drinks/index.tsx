@@ -32,19 +32,17 @@ function DrinksStack() {
       />
 
       <Stack.Screen
-        options={({ route }) => ({
-          // @ts-expect-error
-          title: route.params?.title ?? "Drink",
-        })}
+        options={{
+          title: "Loading...",
+        }}
         name="DrinkId"
         component={DrinkId}
       />
 
       <Stack.Screen
-        options={({ route }) => ({
-          // @ts-expect-error
-          title: `${route.params?.title ?? "Drink"} progress`,
-        })}
+        options={{
+          title: "Loading...",
+        }}
         name="DrinkIdProgress"
         component={DrinkIdProgress}
       />

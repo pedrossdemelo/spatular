@@ -4,7 +4,7 @@ import * as Clipboard from "expo-clipboard";
 import * as Linking from "expo-linking";
 import { useProgressIngredients, useRecipeList } from "hooks";
 import { AnimatePresence, MotiView } from "moti";
-import React, { ComponentProps } from "react";
+import React, { ComponentProps, useLayoutEffect } from "react";
 import tw from "styles";
 import { useDeviceContext } from "twrnc";
 import { ParsedRecipe, showToast } from "utils";
@@ -32,6 +32,12 @@ export default function ConsumableIdProgress(props: ConsumableIdProgressProps) {
   useDeviceContext(tw);
 
   const navigation = useNavigation<any>();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: `${name} progress`,
+    });
+  }, [name]);
 
   const [doneRecipes, completeRecipe, restartRecipe] =
     useRecipeList("doneRecipes");
