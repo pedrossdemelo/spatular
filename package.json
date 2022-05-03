@@ -14,7 +14,7 @@
     "cypress": "cypress run",
     "cypress:open": "cypress open",
     "postinstall": "patch-package",
-    "deploy:web": "expo build:web && cp vercel.json web-build && vercel --prod"
+    "deploy:web": "expo build:web && cp vercel.json web-build && cd web-build && vercel --prod"
   },
   "dependencies": {
     "@expo-google-fonts/dm-sans": "^0.2.2",
