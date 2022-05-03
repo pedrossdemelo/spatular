@@ -25,7 +25,7 @@ export const DarkTheme = {
   colors: {
     primary: tw.color("orange-600")!,
     background: "#101010",
-    card: tw.color("neutral-900"),
+    card: tw.color("neutral-900")!,
     text: tw.color("neutral-200")!,
     border: "transparent"!,
     notification: tw.color("orange-700")!,
