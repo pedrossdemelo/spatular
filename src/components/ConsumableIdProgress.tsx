@@ -49,7 +49,7 @@ export default function ConsumableIdProgress(props: ConsumableIdProgressProps) {
   const copyUrl = () => {
     const routeName = Linking.createURL(`/${type}s/${id}`);
     Clipboard.setString(routeName);
-    showToast("Copied to clipboard", tw);
+    showToast("Copied to clipboard!", tw);
   };
 
   const [favoriteRecipes, addFavorite, removeFavorite] =
