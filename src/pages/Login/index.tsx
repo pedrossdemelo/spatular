@@ -119,6 +119,7 @@ function Login() {
             variant="outlined"
             onPress={handleLogin}
             pressColor={tw`text-white/10`.color as string}
+            disabled={disabled}
             outerSx={tw`border-white`}
           >
             Login
