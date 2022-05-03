@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
 import { SButton } from "components/atoms";
 import { styled, Text, TextInput, View } from "dripsy";
 import { Video } from "expo-av";
@@ -19,8 +18,6 @@ import { useDeviceContext } from "twrnc";
 const cookingLoop = require("../../../assets/cookingloop.mp4");
 
 function Login() {
-  const navigation = useNavigation<any>();
-
   const [email, setEmail] = useState("");
 
   useBarStyles("light");
@@ -39,7 +36,6 @@ function Login() {
 
   const handleLogin = () => {
     login(email);
-    navigation.navigate("MainTabsStack");
   };
 
   const insets = useSafeAreaInsets();

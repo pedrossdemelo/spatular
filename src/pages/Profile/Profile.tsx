@@ -24,8 +24,6 @@ function Profile() {
     setFavorites([]);
     setInProgressRecipes({ meals: {}, cocktails: {} });
     logout();
-    navigation.popToTop();
-    navigation.replace("Login");
   };
 
   const goToDoneRecipes = () => navigation.navigate("DoneRecipes");

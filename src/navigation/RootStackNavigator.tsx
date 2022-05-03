@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
+import { useAuth } from "hooks";
 import Login from "pages/Login";
 import { useColorScheme } from "react-native";
 import linking from "./linking";
@@ -18,6 +19,8 @@ function RootStack() {
   const scheme = useColorScheme();
   const isDark = scheme === "dark";
 
+  const { user } = useAuth();
+
   return (
     <>
       <StatusBar style="auto" />
@@ -31,9 +34,11 @@ function RootStack() {
           screenOptions={{ headerShown: false }}
           initialRouteName="Login"
         >
-          <Root.Screen name="Login" component={Login} />
+          {!user && <Root.Screen name="Login" component={Login} />}
 
-          <Root.Screen name="MainTabsStack" component={MainTabsStack} />
+          {user && (
+            <Root.Screen name="MainTabsStack" component={MainTabsStack} />
+          )}
         </Root.Navigator>
       </NavigationContainer>
     </>
