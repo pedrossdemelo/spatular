@@ -32,7 +32,7 @@ function ConsumableDoneCard(props: ConsumableDoneCardProps) {
   const goToRecipePage = () => {
     navigation.navigate(`${capitalize(type)}sStack`, {
       screen: `${capitalize(type)}Id`,
-      params: { id, title: name },
+      params: { id },
     });
   };
 

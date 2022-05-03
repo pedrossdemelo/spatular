@@ -25,9 +25,9 @@ export default function ExploreDrinks() {
       },
     } = await Api.fetchJson(url);
 
-    const { id, name } = parseRecipe(drink);
+    const { id } = parseRecipe(drink);
 
-    navigate("DrinksStack", { screen: "DrinkId", params: { id, title: name } });
+    navigate("DrinksStack", { screen: "DrinkId", params: { id } });
   };
 
   return (

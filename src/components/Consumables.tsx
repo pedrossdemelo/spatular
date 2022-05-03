@@ -31,7 +31,7 @@ function ConsumableCard({ data }: ConsumableCardProps) {
 
   const page = type === "food" ? "FoodId" : "DrinkId";
 
-  const goToId = () => navigate(page, { id, title: name });
+  const goToId = () => navigate(page, { id });
 
   return (
     <ImageDescriptionGradient

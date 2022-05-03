@@ -32,9 +32,9 @@ export default function ExploreFoods() {
       },
     } = await Api.fetchJson(url);
 
-    const { id, name } = parseRecipe(food);
+    const { id } = parseRecipe(food);
 
-    navigate("FoodsStack", { screen: "FoodId", params: { id, title: name } });
+    navigate("FoodsStack", { screen: "FoodId", params: { id } });
   };
 
   return (

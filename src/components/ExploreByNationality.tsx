@@ -37,11 +37,11 @@ export default function ExploreByNationality(props: ExploreByNationalityProps) {
   const [results, loading] = useDataDbApi(foodApi.getByNationality(selected));
 
   const { navigate } = useNavigation();
-  const goToId = (id: string, name: string) => () =>
+  const goToId = (id: string) => () =>
     // @ts-expect-error
     navigate(`${capitalize(type)}sStack`, {
       screen: `${capitalize(type)}Id`,
-      params: { id, title: name },
+      params: { id },
     });
 
   return (
@@ -80,7 +80,7 @@ export default function ExploreByNationality(props: ExploreByNationalityProps) {
           {results.map(({ name, image, id }) => (
             <ImageDescriptionGradient
               key={name}
-              onPress={goToId(id, name)}
+              onPress={goToId(id)}
               source={image}
               title={name}
               sx={tw`w-full max-w-140 self-center aspect-video my-2`}
