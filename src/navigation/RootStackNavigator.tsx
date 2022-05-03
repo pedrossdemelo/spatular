@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StatusBar } from "expo-status-bar";
 import Login from "pages/Login";
 import { useColorScheme } from "react-native";
 import linking from "./linking";
@@ -18,20 +19,24 @@ function RootStack() {
   const isDark = scheme === "dark";
 
   return (
-    <NavigationContainer
-      theme={isDark ? DarkTheme : LightTheme}
-      // @ts-expect-error
-      linking={linking}
-    >
-      <Root.Navigator
-        screenOptions={{ headerShown: false }}
-        initialRouteName="Login"
-      >
-        <Root.Screen name="Login" component={Login} />
+    <>
+      <StatusBar style="auto" />
 
-        <Root.Screen name="MainTabsStack" component={MainTabsStack} />
-      </Root.Navigator>
-    </NavigationContainer>
+      <NavigationContainer
+        theme={isDark ? DarkTheme : LightTheme}
+        // @ts-expect-error
+        linking={linking}
+      >
+        <Root.Navigator
+          screenOptions={{ headerShown: false }}
+          initialRouteName="Login"
+        >
+          <Root.Screen name="Login" component={Login} />
+
+          <Root.Screen name="MainTabsStack" component={MainTabsStack} />
+        </Root.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
