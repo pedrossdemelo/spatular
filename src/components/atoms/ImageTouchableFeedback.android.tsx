@@ -3,6 +3,7 @@ import React, { ReactNode } from "react";
 import {
   ColorValue,
   ImageBackground,
+  ImageSourcePropType,
   StyleProp,
   ViewStyle,
 } from "react-native";
@@ -11,7 +12,7 @@ import tw from "styles";
 import { useDeviceContext } from "twrnc";
 
 interface ImageTouchableFeedbackProps {
-  source: string;
+  source: ImageSourcePropType | string;
   children?: ReactNode;
   sx?: StyleProp<ViewStyle>;
   outerSx?: StyleProp<ViewStyle>;
@@ -35,7 +36,7 @@ export default function ImageTouchableFeedback(
 
   return (
     <ImageBackground
-      source={{ uri: source }}
+      source={typeof source === "string" ? { uri: source } : source}
       style={tw.style(
         "overflow-hidden rounded-xl dark:bg-neutral-900 bg-stone-50",
         outerSx as any,

@@ -4,6 +4,7 @@ import React, { ReactNode, useMemo } from "react";
 import {
   ColorValue,
   ImageBackground,
+  ImageSourcePropType,
   StyleProp,
   ViewStyle,
 } from "react-native";
@@ -11,7 +12,7 @@ import tw from "styles";
 import { useDeviceContext } from "twrnc";
 
 interface ImageTouchableFeedbackProps {
-  source: string;
+  source: ImageSourcePropType | string;
   children?: ReactNode;
   sx?: StyleProp<ViewStyle>;
   outerSx?: StyleProp<ViewStyle>;
@@ -60,7 +61,7 @@ export default function ImageTouchableFeedback(
     >
       <ImageBackground
         testID={testID}
-        source={{ uri: source }}
+        source={typeof source === "string" ? { uri: source } : source}
         style={parse(tw.style("w-full h-full overflow-hidden rounded-xl"))}
         resizeMode="cover"
       >
