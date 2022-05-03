@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { ActivityIndicator, ScrollView } from "react-native";
 import { foodApi } from "services";
 import tw from "styles";
+import { useDeviceContext } from "twrnc";
 import { Meal } from "utils";
 import { ImageDescriptionGradient } from "./atoms";
 
@@ -25,6 +26,8 @@ interface ExploreByNationalityProps {
 
 export default function ExploreByNationality(props: ExploreByNationalityProps) {
   const { type } = props;
+
+  useDeviceContext(tw);
 
   const [nationalities] = useDataDbApi(foodApi.getNationalities(), {
     parser: parseNationalities,
