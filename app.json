@@ -1,7 +1,7 @@
 {
   "expo": {
     "jsEngine": "hermes",
-    "name": "spatular",
+    "name": "Spatular",
     "slug": "spatular",
     "scheme": "spatular",
     "version": "1.0.0",
@@ -27,7 +27,9 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#fafaf9"
-      }
+      },
+      "package": "com.pedrosousa.spatular",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
