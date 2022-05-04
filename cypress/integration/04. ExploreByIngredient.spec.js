@@ -23,7 +23,7 @@ function runSpecsOn(type) {
       });
     });
 
-    it("should display a list of at least twelve ingredients", () => {
+    it("should display a list of at least twelve ingredients in alphabetical order", () => {
       INGREDIENTS.forEach(({ name, image }) => {
         cy.get(`img[alt="${name}"]`).should("have.attr", "src", image);
 
