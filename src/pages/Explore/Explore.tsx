@@ -34,6 +34,7 @@ export default function Explore() {
         sx={tw`my-4 mx-4 grow md:mb-12 md:flex-row md:mx-4 md:justify-center md:items-center`}
       >
         <ImageDescriptionGradient
+          alt="Meals"
           onPress={goToExploreFoods}
           sx={tw`md:w-100 w-full max-w-100 self-center aspect-6/5 md:mx-2`}
           source={food?.image}
@@ -44,6 +45,7 @@ export default function Explore() {
         <View sx={tw`h-4`} />
 
         <ImageDescriptionGradient
+          alt="Drinks"
           onPress={goToExploreDrinks}
           sx={tw`md:w-100 w-full max-w-100 self-center aspect-6/5 md:mx-2`}
           source={drink?.image}

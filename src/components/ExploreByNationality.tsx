@@ -79,6 +79,7 @@ export default function ExploreByNationality(props: ExploreByNationalityProps) {
         <View sx={tw`mx-4`}>
           {results.map(({ name, image, id }) => (
             <ImageDescriptionGradient
+              alt={name}
               key={name}
               onPress={goToId(id)}
               source={image}

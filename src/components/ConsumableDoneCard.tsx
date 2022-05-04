@@ -51,6 +51,7 @@ function ConsumableDoneCard(props: ConsumableDoneCardProps) {
 
   return (
     <ImageTouchableGradient
+      alt={name}
       testID={`${name}-done-card`}
       onPress={goToRecipePage}
       colors={[tw.color("black/50")!, "transparent", tw.color("black/50")!]}

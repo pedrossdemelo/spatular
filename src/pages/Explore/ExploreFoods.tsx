@@ -42,6 +42,7 @@ export default function ExploreFoods() {
       <ScrollView contentContainerSx={tw`grow`}>
         <View sx={tw`m-4`}>
           <ImageDescriptionGradient
+            alt="Food ingredients"
             source={foodIngredients}
             onPress={goToExploreFoodsByIngredient}
             title="Explore by ingredient"
@@ -50,6 +51,7 @@ export default function ExploreFoods() {
           />
 
           <ImageDescriptionGradient
+            alt="Food in the shape of continents"
             source={foodNationalities}
             onPress={goToExploreFoodsByNationality}
             title="Explore by nationality"

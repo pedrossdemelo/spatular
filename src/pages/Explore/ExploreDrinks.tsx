@@ -35,6 +35,7 @@ export default function ExploreDrinks() {
       <ScrollView contentContainerSx={tw`grow`}>
         <View sx={tw`m-4`}>
           <ImageDescriptionGradient
+            alt="Drink ingredients"
             source={drinkIngredients}
             onPress={goToExploreDrinksByIngredient}
             title="Explore by ingredient"

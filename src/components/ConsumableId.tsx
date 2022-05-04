@@ -207,6 +207,7 @@ export default function ConsumableId(props: ConsumableIdProps) {
           >
             {recommendations.map((r) => (
               <ImageDescriptionGradient
+                alt={r.name}
                 title={r.name}
                 key={r.name}
                 source={r.image}

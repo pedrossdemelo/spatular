@@ -35,6 +35,7 @@ function ConsumableCard({ data }: ConsumableCardProps) {
 
   return (
     <ImageDescriptionGradient
+      alt={name}
       testID={`${name}-card`}
       onPress={goToId}
       source={image}
