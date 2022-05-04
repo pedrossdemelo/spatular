@@ -43,9 +43,8 @@ const validateTenRecipeCards = (rawData) => {
     cy.get(`@${name}-card`)
       .scrollIntoView()
       .within(() => {
-        cy.contains(name).should("be.visible");
         cy.get(`div[style*='background-image: url("${image}")']`).should(
-          "be.visible",
+          "exist",
         );
         cy.get(`[alt="${name}"]`).should("exist");
       });
@@ -63,9 +62,11 @@ const validateFiveFilterChips = (rawData) => {
   mapCategories(rawData).forEach((category) => {
     cy.get(`[data-testid="${category}-filter"]`).as(`${category}-filter`);
 
-    cy.get(`@${category}-filter`).within(() => {
-      cy.contains(category).should("be.visible");
-    });
+    cy.get(`@${category}-filter`)
+      .parent()
+      .within(() => {
+        cy.contains(category).should("exist");
+      });
   });
 };
 
@@ -89,35 +90,35 @@ describe("Foods page", () => {
   it("should have cards that are clickable and redirect to '/foods/:id'", () => {
     const { name, id } = mapRecipes(mealsMock)[0];
 
-    cy.get(`[data-testid="${name}-card"]`).click();
+    cy.get(`[data-testid="${name}-card"]`).click({ force: true });
 
     cy.location("pathname").should("eq", `/foods/${id}`);
   });
 
   mapCategories(mealCategoriesMock).forEach((category) => {
     it(`should render at least ten filtered recipe cards from a ${category} api query`, () => {
-      cy.get(`[data-testid="${category}-filter"]`).click();
+      cy.get(`[data-testid="${category}-filter"]`).click({ force: true });
 
       validateTenRecipeCards(mocksMap[category]);
     });
   });
 
   it("should only be able to select one filter chip at a time", () => {
-    cy.get('[data-testid="Beef-filter"]').click();
+    cy.get('[data-testid="Beef-filter"]').click({ force: true });
 
     validateTenRecipeCards(beefMealsMock);
 
-    cy.get('[data-testid="Chicken-filter"]').click();
+    cy.get('[data-testid="Chicken-filter"]').click({ force: true });
 
     validateTenRecipeCards(chickenMealsMock);
   });
 
   it("should have filters that act as toggles", () => {
-    cy.get('[data-testid="Beef-filter"]').click();
+    cy.get('[data-testid="Beef-filter"]').click({ force: true });
 
     validateTenRecipeCards(beefMealsMock);
 
-    cy.get('[data-testid="Beef-filter"]').click();
+    cy.get('[data-testid="Beef-filter"]').click({ force: true });
 
     validateTenRecipeCards(mealsMock);
   });
@@ -143,35 +144,37 @@ describe("Drinks page", () => {
   it("should have cards that are clickable and redirect to '/drinks/:id'", () => {
     const { name, id } = mapRecipes(drinksMock)[0];
 
-    cy.get(`[data-testid="${name}-card"]`).click();
+    cy.get(`[data-testid="${name}-card"]`).click({ force: true });
 
     cy.location("pathname").should("eq", `/drinks/${id}`);
   });
 
   mapCategories(drinkCategoriesMock).forEach((category) => {
     it(`should render at least ten filtered recipe cards from a ${category} api query`, () => {
-      cy.get(`[data-testid="${category}-filter"]`).click();
+      cy.get(`[data-testid="${category}-filter"]`).click({ force: true });
 
       validateTenRecipeCards(mocksMap[category]);
     });
   });
 
   it("should only be able to select one filter chip at a time", () => {
-    cy.get('[data-testid="Cocktail-filter"]').click();
+    cy.get('[data-testid="Cocktail-filter"]').click({ force: true });
 
     validateTenRecipeCards(cocktailDrinksMock);
 
-    cy.get('[data-testid="Milk / Float / Shake-filter"]').click();
+    cy.get('[data-testid="Milk / Float / Shake-filter"]').click({
+      force: true,
+    });
 
     validateTenRecipeCards(milkDrinksMock);
   });
 
   it("should have filters that act as toggles", () => {
-    cy.get('[data-testid="Cocktail-filter"]').click();
+    cy.get('[data-testid="Cocktail-filter"]').click({ force: true });
 
     validateTenRecipeCards(cocktailDrinksMock);
 
-    cy.get('[data-testid="Cocktail-filter"]').click();
+    cy.get('[data-testid="Cocktail-filter"]').click({ force: true });
 
     validateTenRecipeCards(drinksMock);
   });
