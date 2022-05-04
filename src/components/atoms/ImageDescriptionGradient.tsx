@@ -10,15 +10,17 @@ interface ImageDescriptionGradientProps {
   title: string;
   subtitle?: string;
   testID?: string;
+  alt: string;
 }
 
 export default function ImageDescriptionGradient(
   props: ImageDescriptionGradientProps,
 ) {
-  const { onPress, source, sx, title, subtitle, testID } = props;
+  const { onPress, source, sx, title, subtitle, testID, alt } = props;
 
   return (
     <ImageTouchableGradient
+      alt={alt}
       testID={testID}
       onPress={onPress}
       sx={sx}

@@ -11,6 +11,7 @@ interface ImageTouchableGradientProps {
   colors?: string[];
   onPress: () => void;
   testID?: string;
+  alt: string;
 }
 
 function ImageTouchableGradient(props: ImageTouchableGradientProps) {
@@ -21,12 +22,14 @@ function ImageTouchableGradient(props: ImageTouchableGradientProps) {
     colors = [tw.color("transparent")!, tw.color("black/50")!],
     onPress,
     testID,
+    alt,
   } = props;
 
   useDeviceContext(tw);
 
   return (
     <ImageTouchableFeedback
+      alt={alt}
       testID={testID}
       onPress={onPress}
       source={source}
