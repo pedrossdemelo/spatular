@@ -42,41 +42,35 @@ describe("Done recipes screen", () => {
   });
 
   it("should be able to filter by drinks", () => {
-    const { name, category, image } = drink;
+    const { name, image } = drink;
     const { name: nameFood } = food;
 
     cy.getByTestId("filter-drink-button").click({ force: true });
 
     cy.getByTestId(`${name}-done-card`).as("drink-card");
-    cy.get("@drink-card").should("contain", name);
-    cy.get("@drink-card").should("contain", category);
     cy.get("@drink-card").find("img").should("have.attr", "src", image);
 
     cy.getByTestId(`${nameFood}-done-card`).should("not.exist");
   });
 
   it("should be able to filter by foods", () => {
-    const { name, category, image } = food;
+    const { name, image } = food;
     const { name: nameDrink } = drink;
 
     cy.getByTestId("filter-food-button").click({ force: true });
 
     cy.getByTestId(`${name}-done-card`).as("food-card");
-    cy.get("@food-card").should("contain", name);
-    cy.get("@food-card").should("contain", category);
     cy.get("@food-card").find("img").should("have.attr", "src", image);
 
     cy.getByTestId(`${nameDrink}-done-card`).should("not.exist");
   });
 
   it("should display all recipes if the filter is all", () => {
-    cy.getByTestId("filter-all-button").click();
+    cy.getByTestId("filter-all-button").click({ force: true });
 
-    doneRecipes.forEach(({ name, category, image }) => {
+    doneRecipes.forEach(({ name, image }) => {
       cy.getByTestId(`${name}-done-card`).as(`${name}-card`);
 
-      cy.get(`@${name}-card`).should("contain", name);
-      cy.get(`@${name}-card`).should("contain", category);
       cy.get(`@${name}-card`).find("img").should("have.attr", "src", image);
     });
   });
@@ -131,7 +125,7 @@ describe("Done recipes screen", () => {
 
   it("should redirect to the recipe id page when clicking on a recipe image", () => {
     doneRecipes.forEach(({ id, name, type }) => {
-      cy.getByTestId(`${name}-anchor`).click({ force: true });
+      cy.getByTestId(`${name}-done-card`).click({ force: true });
 
       cy.location("pathname").should("eq", `/${type}s/${id}`);
 
