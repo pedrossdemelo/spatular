@@ -9,7 +9,10 @@ function runSpecsOn(type) {
   const MOCK = isFoods
     ? mealIngredientsMock.meals
     : drinkIngredientsMock.drinks;
-  const INGREDIENTS = MOCK.slice(0, 12).map(parseIngredients);
+  const INGREDIENTS = MOCK.map(parseIngredients)
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .slice(0, 12)
+    .filter((i) => !i.name.startsWith("7"));
 
   describe(`Explore ${type} by ingredient page`, () => {
     before(() => {
