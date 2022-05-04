@@ -102,17 +102,15 @@ function runSpecsOn(page) {
       const { ingredients } = parseRecipe(MOCK);
 
       ingredients.forEach(({ name, measure }) => {
-        cy.contains(name, { matchCase: false }).should("exist");
+        cy.contains(name.trim(), { matchCase: false }).should("exist");
 
-        measure && cy.contains(measure, { matchCase: false }).should("exist");
+        measure &&
+          cy.contains(measure.trim(), { matchCase: false }).should("exist");
       });
     });
 
-    it("should display a disabled 'finish' button when there's ingredients left", () => {
-      cy.contains('[role="button"]', /finish/i).should(
-        "have.attr",
-        "aria-disabled",
-      );
+    it("should not display 'finish' button when there's ingredients left", () => {
+      cy.contains('[role="button"]', /finish/i).should("not.exist");
     });
 
     it("should be able to check the ingredients and save the state in local storage", () => {
