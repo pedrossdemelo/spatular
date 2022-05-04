@@ -92,7 +92,7 @@ function SButton<T extends Keys = "MaterialCommunityIcons">(
   const Icon = useMemo(() => Icons[iconGallery], [iconGallery]);
 
   return (
-    <View testID={testID}>
+    <View>
       <MotiPressable
         accessibilityRole="button"
         accessibilityState={{ disabled }}
@@ -113,6 +113,8 @@ function SButton<T extends Keys = "MaterialCommunityIcons">(
         )}
         transition={{ type: "timing", duration: 150 }}
       >
+        <View testID={testID} />
+
         {!!startIcon && (
           <Icon color={textStyle.color as string} name={startIcon} size={24} />
         )}
