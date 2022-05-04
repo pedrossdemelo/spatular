@@ -48,7 +48,7 @@ describe("Explore meals by nationality page", () => {
   it("should redirect the user to the recipe details page when clicking the card", () => {
     const { name, id } = ITALIAN_MEALS[0];
 
-    cy.get(`img[alt="${name}"]`).click();
+    cy.get(`img[alt="${name}"]`).click({ force: true });
 
     cy.on("uncaught:exception", (err) => {
       expect(err.message).to.include("Cannot read properties of undefined");
