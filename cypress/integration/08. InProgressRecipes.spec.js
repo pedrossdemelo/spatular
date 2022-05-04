@@ -1,7 +1,7 @@
-import { parseRecipe } from "../../src/utils";
 import fetchMock from "../mocks/fetch";
 import oneDrink from "../mocks/oneDrink";
 import oneMeal from "../mocks/oneMeal";
+import { parseRecipe } from "../utils";
 
 function runSpecsOn(page) {
   const isFoods = page === "foods";

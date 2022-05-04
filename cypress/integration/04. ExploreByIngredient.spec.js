@@ -1,7 +1,7 @@
-import { parseIngredients } from "utils";
 import drinkIngredientsMock from "../mocks/drinkIngredients";
 import fetchMock from "../mocks/fetch";
 import mealIngredientsMock from "../mocks/mealIngredients";
+import { parseIngredients } from "../utils";
 
 function runSpecsOn(type) {
   const isFoods = type === "foods";

@@ -1,4 +1,3 @@
-import { parseRecipe } from "../../src/utils";
 import beefMealsMock from "../mocks/beefMeals";
 import breakfastMealsMock from "../mocks/breakfastMeals";
 import chickenMealsMock from "../mocks/chickenMeals";
@@ -14,6 +13,7 @@ import mealsMock from "../mocks/meals";
 import milkDrinksMock from "../mocks/milkDrinks";
 import ordinaryDrinksMock from "../mocks/ordinaryDrinks";
 import otherDrinksMock from "../mocks/otherDrinks";
+import { parseRecipe } from "../utils";
 
 const mocksMap = {
   Beef: beefMealsMock,

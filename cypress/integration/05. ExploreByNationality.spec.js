@@ -1,8 +1,8 @@
-import { parseRecipe } from "../../src/utils";
 import areasMock from "../mocks/areas";
 import fetchMock from "../mocks/fetch";
 import italianMealsMock from "../mocks/italianMeals";
 import japaneseMealsMock from "../mocks/japaneseMeals";
+import { parseRecipe } from "../utils";
 
 function checkRecipes(mock) {
   mock.slice(0, 10).forEach(({ name, image }) => {
