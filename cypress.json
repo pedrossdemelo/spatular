@@ -2,7 +2,7 @@
   "baseUrl": "http://localhost:19006",
   "viewportWidth": 360,
   "viewportHeight": 640,
-  "defaultCommandTimeout": 10000,
+  "defaultCommandTimeout": 15000,
   "video": false,
   "screenshotOnRunFailure": false
 }
