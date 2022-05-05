@@ -113,16 +113,22 @@ function SButton<T extends Keys = "MaterialCommunityIcons">(
         )}
         transition={{ type: "timing", duration: 150 }}
       >
-        <View testID={testID} />
-
         {!!startIcon && (
           <Icon color={textStyle.color as string} name={startIcon} size={24} />
         )}
 
         {typeof children === "string" ? (
-          <Text sx={textStyle}>{children}</Text>
+          <Text sx={textStyle}>
+            {children}
+
+            <View testID={testID} />
+          </Text>
         ) : (
-          children
+          <>
+            {children}
+
+            <View testID={testID} />
+          </>
         )}
 
         {!!endIcon && (
