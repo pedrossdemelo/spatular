@@ -86,6 +86,8 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
 
 ## Installation
 
+### Android & iOS
+
 1. Make an [expo account](https://expo.dev/)
 2. Clone the repo
 
@@ -107,6 +109,27 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
 
    ```zsh
    eas build -p android --profile production
+   ```
+
+### Web
+
+1. Make a [vercel account](https://vercel.com)
+2. Clone the repo
+
+   ```zsh
+   git clone https://github.com/PedroSSM2000/spatular.git
+   ```
+
+3. Install packages
+
+   ```zsh
+   yarn
+   ```
+
+4. Build and deploy for web
+
+   ```zsh
+   yarn deploy:web
    ```
 
 ## Roadmap
