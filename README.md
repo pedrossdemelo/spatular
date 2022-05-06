@@ -17,9 +17,11 @@
 
   <p>
     <strong>The modern cookbook</strong><br>
-    <a href="https://github.com/PedroSSM2000/spatular/issues">Report Bug</a>
+    <a href="https://spatular.vercel.app">Web</a>
     ·
-    <a href="https://github.com/PedroSSM2000/spatular/issues">Request Feature</a>
+    <a href="">iOS (Coming soon)</a>
+    ·
+    <a href="">Android (In review)</a>
   </p>
 
   <br>
@@ -32,7 +34,7 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
 <br>
 <br>
 
-<p align="center">
+<div align="center">
   <kbd>
     <img
       src="docs/assets/iOS.gif"
@@ -47,7 +49,7 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
   </kbd>
   <br>
   <br>
-</p>
+</div>
 
 <!-- TABLE OF CONTENTS -->
 
@@ -145,6 +147,7 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
 - [x] Profile page
 - [x] Done recipes page
 - [x] Favorite recipes page
+- [x] Dark mode
 - [ ] Internationalization support
 - [ ] Deep linking
 - [ ] Supabase auth
