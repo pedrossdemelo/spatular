@@ -122,9 +122,9 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
 - [x] Profile page
 - [x] Done recipes page
 - [x] Favorite recipes page
-- [] Internationalization support
-- [] Deep linking
-- [] Supabase auth
+- [ ] Internationalization support
+- [ ] Deep linking
+- [ ] Supabase auth
 
 ## License
 
