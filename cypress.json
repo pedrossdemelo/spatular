@@ -4,6 +4,7 @@
   "viewportHeight": 640,
   "defaultCommandTimeout": 15000,
   "video": false,
+  "pageLoadTimeout": 100000,
   "screenshotOnRunFailure": false,
   "retries": {
     "runMode": 2,
