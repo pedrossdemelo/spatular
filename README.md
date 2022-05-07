@@ -57,7 +57,7 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#screenshots">Screenshots</a></li>
-    <li><a href="#built-with">Built With</a></li>
+    <li><a href="#built-with">Built with</a></li>
     <li><a href="#installation">Installation</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#license">License</a></li>
