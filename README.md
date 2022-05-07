@@ -149,6 +149,7 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
 - [x] Done recipes page
 - [x] Favorite recipes page
 - [x] Dark mode
+- [ ] Guest users
 - [ ] Internationalization support
 - [ ] Deep linking
 - [ ] Supabase auth
