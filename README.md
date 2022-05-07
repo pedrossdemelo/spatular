@@ -60,6 +60,7 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
     <li><a href="#built-with">Built with</a></li>
     <li><a href="#installation">Installation</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#known-issues">Known issues</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -151,6 +152,10 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
 - [ ] Internationalization support
 - [ ] Deep linking
 - [ ] Supabase auth
+
+## Known issues
+
+These no known issues at the moment. If you find one, please [open an issue](https://github.com/PedroSSM2000/espressowallet/issues), it would be greatly appreciated!
 
 ## License
 
