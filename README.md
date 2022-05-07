@@ -78,9 +78,9 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
   <img src="docs/assets/Frame 8.png" height="450px" />
 </div>
 
-## Built With
+## Built with
 
-- [React native](https://reactnative.dev/)
+- [React Native](https://reactnative.dev/)
 - [Expo](https://expo.dev/)
 - [Reanimated 2](https://docs.swmansion.com/react-native-reanimated/)
 - [React Navigation](https://reactnavigation.org/)
