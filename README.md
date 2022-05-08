@@ -156,7 +156,7 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
 
 ## Known issues
 
-These no known issues at the moment. If you find one, please [open an issue](https://github.com/PedroSSM2000/espressowallet/issues), it would be greatly appreciated!
+These no known issues at the moment. If you find one, please [open an issue](https://github.com/PedroSSM2000/spatular/issues), it would be greatly appreciated!
 
 ## License
 
