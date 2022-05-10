@@ -21,7 +21,7 @@
     ·
     <a href="">iOS (Coming soon)</a>
     ·
-    <a href="">Android (In review)</a>
+    <a href="https://play.google.com/store/apps/details?id=com.pedrosousa.spatular">Android</a>
   </p>
 
   <br>
