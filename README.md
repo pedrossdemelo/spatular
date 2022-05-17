@@ -95,7 +95,7 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
 2. Clone the repo
 
    ```zsh
-   git clone https://github.com/PedroSSM2000/spatular.git
+   git clone https://github.com/pedrossdemelo/spatular.git
    ```
 
 3. Install packages
@@ -120,7 +120,7 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
 2. Clone the repo
 
    ```zsh
-   git clone https://github.com/PedroSSM2000/spatular.git
+   git clone https://github.com/pedrossdemelo/spatular.git
    ```
 
 3. Install packages
@@ -156,7 +156,7 @@ It's time to cook some Spatular recipes! The modern cookbook is filled with reci
 
 ## Known issues
 
-These no known issues at the moment. If you find one, please [open an issue](https://github.com/PedroSSM2000/spatular/issues), it would be greatly appreciated!
+These no known issues at the moment. If you find one, please [open an issue](https://github.com/pedrossdemelo/spatular/issues), it would be greatly appreciated!
 
 ## License
 
@@ -168,15 +168,15 @@ Distributed under the GPL 3.0 License. See `LICENSE` for more information.
 
 <p align="right"><a href="#top">Back to top</a></p>
 
-[contributors-shield]: https://img.shields.io/github/contributors/PedroSSM2000/spatular?style=for-the-badge
-[contributors-url]: https://github.com/PedroSSM2000/spatular/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/PedroSSM2000/spatular?style=for-the-badge
-[forks-url]: https://github.com/PedroSSM2000/spatular/network/members
-[stars-shield]: https://img.shields.io/github/stars/PedroSSM2000/spatular?style=for-the-badge
-[stars-url]: https://github.com/PedroSSM2000/spatular/stargazers
-[issues-shield]: https://img.shields.io/github/issues/PedroSSM2000/spatular?style=for-the-badge
-[issues-url]: https://github.com/PedroSSM2000/spatular/issues
-[license-shield]: https://img.shields.io/github/license/PedroSSM2000/spatular?style=for-the-badge
-[license-url]: https://github.com/PedroSSM2000/spatular/blob/main/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/pedrossdemelo/spatular?style=for-the-badge
+[contributors-url]: https://github.com/pedrossdemelo/spatular/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/pedrossdemelo/spatular?style=for-the-badge
+[forks-url]: https://github.com/pedrossdemelo/spatular/network/members
+[stars-shield]: https://img.shields.io/github/stars/pedrossdemelo/spatular?style=for-the-badge
+[stars-url]: https://github.com/pedrossdemelo/spatular/stargazers
+[issues-shield]: https://img.shields.io/github/issues/pedrossdemelo/spatular?style=for-the-badge
+[issues-url]: https://github.com/pedrossdemelo/spatular/issues
+[license-shield]: https://img.shields.io/github/license/pedrossdemelo/spatular?style=for-the-badge
+[license-url]: https://github.com/pedrossdemelo/spatular/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/pedrossdemelo/
