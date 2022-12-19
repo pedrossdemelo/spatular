@@ -20,7 +20,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "userInterfaceStyle": "automatic"
+      "userInterfaceStyle": "automatic",
+      "bundleIdentifier": "com.pedrosousa.spatular"
     },
     "android": {
       "userInterfaceStyle": "automatic",
