@@ -1,26 +1,19 @@
 import { Ingredient } from "./parseIngredients";
 
-type IngredientSection = {
-  title: string;
-  data: Ingredient[];
-};
+export type IngredientAndSection = string | Ingredient;
 
 export default function convertToAlphabeticalSections(
   ingredients: Ingredient[],
 ) {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  const sections: IngredientSection[] = [];
-  alphabet.forEach((letter) => {
-    const filtered = ingredients.filter((ingredient) =>
-      ingredient.name.startsWith(letter),
-    );
-
-    if (filtered.length > 0) {
-      sections.push({
-        title: letter,
-        data: filtered,
-      });
+  ingredients.sort((a, b) => a.name.localeCompare(b.name));
+  const sections: IngredientAndSection[] = [];
+  let currentLetter: string | null = null;
+  ingredients.forEach((ingredient) => {
+    if (currentLetter?.toLowerCase() !== ingredient.name[0].toLowerCase()) {
+      currentLetter = ingredient.name[0].toUpperCase();
+      sections.push(currentLetter.toUpperCase());
     }
+    sections.push(ingredient);
   });
 
   return sections;

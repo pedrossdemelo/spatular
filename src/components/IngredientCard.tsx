@@ -34,7 +34,7 @@ export default function IngredientCard(props: IngredientCardProps) {
     <STouchable
       onPress={searchForRecipe}
       sx={tw`flex-row items-center overflow-visible p-3`}
-      outerSx={tw`rounded-lg self-center w-full max-w-140 mb-4 bg-white dark:bg-neutral-900`}
+      outerSx={tw`rounded-lg mx-4 max-w-140 mb-4 bg-white dark:bg-neutral-900`}
       pressColor={
         tw`text-stone-800/20 dark:text-neutral-100/20`.color as string
       }

@@ -1,7 +1,8 @@
+import { FlashList } from "@shopify/flash-list";
 import { Text, View } from "dripsy";
 import { useDataDbApi } from "hooks";
 import React, { useMemo, useState } from "react";
-import { ActivityIndicator, SectionList } from "react-native";
+import { ActivityIndicator } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -37,7 +38,7 @@ export default function ExploreByIngredient(props: ExploreByIngredientProps) {
     [search, allIngredients],
   );
 
-  const ingredientSections = useMemo(
+  const ingredientsAndSections = useMemo(
     () => convertToAlphabeticalSections(ingredients),
     [ingredients],
   );
@@ -75,12 +76,14 @@ export default function ExploreByIngredient(props: ExploreByIngredientProps) {
         />
       </Animated.View>
 
-      <SectionList
-        sections={ingredientSections}
-        renderItem={({ item }) => <IngredientCard type={type} data={item} />}
-        contentContainerStyle={tw`pt-16 px-4`}
-        keyExtractor={(item) => item.name}
-        scrollEventThrottle={30}
+      <FlashList
+        data={ingredientsAndSections}
+        renderItem={({ item }) => {
+          if (typeof item === "string") return <SectionHeader title={item} />;
+
+          return <IngredientCard type={type} data={item} />;
+        }}
+        contentContainerStyle={tw`pt-16`}
         onScroll={({ nativeEvent }) => {
           const { y } = nativeEvent.contentOffset;
 
@@ -106,25 +109,23 @@ export default function ExploreByIngredient(props: ExploreByIngredientProps) {
 
           scrollY.value = y;
         }}
-        renderSectionHeader={SectionHeader}
-        stickySectionHeadersEnabled={false}
+        estimatedItemSize={1000}
+        getItemType={(item) =>
+          typeof item === "string" ? "sectionHeader" : "row"
+        }
       />
     </>
   );
 }
 
 interface SectionHeaderProps {
-  section: {
-    title: string;
-  };
+  title: string;
 }
 
-function SectionHeader({ section }: SectionHeaderProps) {
-  const { title } = section;
-
+function SectionHeader({ title }: SectionHeaderProps) {
   return (
     <View
-      sx={tw`flex-row self-center w-full max-w-134 items-center px-3 mt-3 mb-2`}
+      sx={tw`flex-row self-center w-full max-w-134 items-center px-7 mt-3 mb-2`}
     >
       <Text
         sx={tw`text-4xl font-dmsans mr-4 text-stone-600 dark:text-neutral-400 font-bold`}
